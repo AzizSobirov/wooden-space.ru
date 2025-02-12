@@ -4,83 +4,247 @@
   position: fixed;
   top: 0;
   left: 0;
+  padding: rem(38) 0;
   width: 100%;
-  height: rem(120);
   transition: var(--transition-ease);
   z-index: 10;
 
   &.sticky {
-    height: rem(100);
-    background: #fff;
+    background: var(--background);
+
+    &.down {
+      padding-bottom: rem(20);
+      transform: translateY(rem(-120));
+    }
   }
 
-  @include media("xl") {
+  @include media("lg") {
     position: relative;
     padding: rem(25) 0;
     height: auto;
     max-width: 100%;
     background: transparent !important;
   }
+  @include media("md") {
+    padding: rem(20) 0;
+  }
 
   .container {
-    height: 100%;
+    transition: var(--transition-ease);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(36);
+  }
+
+  &__top {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: rem(45);
+    gap: rem(20);
 
-    @include media("sm") {
+    &-logo {
+      position: relative;
+      width: rem(200);
+      height: rem(70);
+
+      @include media("lg") {
+        height: rem(55);
+        width: auto;
+      }
+      @include media("md") {
+        height: rem(50);
+      }
+      @include media("xs") {
+        height: rem(40);
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .btn {
+      margin-left: auto;
+      margin-right: rem(8);
+      padding: 0 rem(22);
+      height: rem(40);
+      font-weight: 400;
+
+      @include media("md") {
+        display: none;
+      }
+    }
+
+    &-socials {
+      display: flex;
+      align-items: center;
       justify-content: center;
+      gap: rem(16);
+
+      @include media("md") {
+        margin-left: auto;
+      }
+      @include media("xs") {
+        display: none;
+      }
+
+      a {
+        height: rem(35);
+        width: rem(35);
+        border-radius: 50%;
+        border: rem(1) solid var(--text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          color: #fff;
+          background: var(--text-color);
+        }
+      }
+
+      svg {
+        width: rem(19);
+        height: rem(19);
+      }
     }
-  }
 
-  &__logo {
-    position: relative;
-    width: rem(176);
-    height: rem(50);
+    &-contact {
+      font-size: rem(22);
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
+      &:hover {
+        color: var(--primary);
+      }
 
-  &__contact {
-    margin-left: auto;
-    color: var(--primary);
-
-    @include media("sm") {
-      display: none;
+      @include media("lg") {
+        font-size: rem(20);
+      }
+      @include media("xxs") {
+        font-size: rem(18);
+      }
     }
   }
 
   &__menu {
-    @include media("xl") {
+    padding: rem(5);
+    width: 100%;
+    border: rem(1) solid var(--text-color);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media("lg") {
       display: none;
     }
 
+    .btn-catalog {
+      width: rem(160);
+      height: rem(48);
+      color: #fff;
+      background: var(--primary);
+      border-radius: 9999px;
+      gap: rem(10);
+
+      &:hover {
+        opacity: 0.9;
+      }
+
+      svg {
+        width: rem(16);
+        height: rem(11);
+      }
+    }
+
     .menu {
+      padding: 0 rem(40);
+      flex-grow: 1;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: rem(30);
+      justify-content: space-between;
+      gap: rem(20);
+
+      @include media("xl") {
+        padding: 0 rem(24);
+        gap: rem(15);
+      }
 
       &-item {
         position: relative;
 
         & > a {
-          font-weight: 300;
-          transition: var(--transition-ease);
+          text-transform: uppercase;
         }
 
         &.active a,
         &:hover a {
           color: var(--primary);
-          border-bottom: rem(1) dashed var(--primary);
+        }
+      }
+
+      .sub-menu {
+        position: absolute;
+        top: calc(100% + rem(30));
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, 20px);
+        opacity: 0;
+        transition: var(--transition-ease);
+        padding: rem(20) rem(35);
+        min-width: fit-content;
+        color: #fff;
+        background-color: var(--primary);
+        border-radius: rem(22);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(16);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: rem(-30);
+          left: 0;
+          width: 100%;
+          height: rem(30);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("/assets/img/wood-bg.svg");
+          background-position: right;
+          background-size: 200% auto;
+          border-radius: rem(22);
+          opacity: 0.5;
+          pointer-events: none;
+        }
+
+        &[data-state="active"] {
+          transform: translate(-50%, 0);
+          opacity: 1;
+        }
+
+        a {
+          color: #fff;
+          font-weight: 300;
+          text-transform: capitalize;
+          white-space: nowrap;
         }
       }
     }
+  }
+
+  &__catalog {
+    display: none;
   }
 }
 
@@ -92,8 +256,8 @@
   display: none;
   z-index: 10;
 
-  @include media("xl") {
-    display: flex;
+  @include media("lg") {
+    display: none;
   }
   @include media("xs") {
     width: 100%;

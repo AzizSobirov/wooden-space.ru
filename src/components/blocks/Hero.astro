@@ -1,0 +1,258 @@
+---
+import { Section, H2, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  isMain?: boolean;
+}
+
+const { isMain = false } = Astro.props;
+---
+
+<!-- Hero -->
+<Section name="hero pt-0">
+  <Fragment slot="header">
+    {
+      isMain ? (
+        <div class="hero__main">
+          <div class="bg-img">
+            <Image src="hero/1.png" />
+          </div>
+
+          <div class="container">
+            <div class="group">
+              <H2>Производство изделий из натурального дерева</H2>
+              <P>
+                Мы правда знаем о дереве все и наша миссия — это современная и
+                безопасная среда обитания человека, будь то квартира, загородный
+                дом, офис или ресторан. Ведь никакой другой отделочный материал
+                не вдохнёт столько тепла и шарма в интерьер, как массив
+                натуральной древесины.
+              </P>
+              <div class="group-actions">
+                <Button variant="secondary" href="/catalog">
+                  Каталог
+                  <svg
+                    width="42"
+                    height="8"
+                    viewBox="0 0 42 8"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 3.5C0.723858 3.5 0.5 3.72386 0.5 4C0.5 4.27614 0.723858 4.5 1 4.5V3.5ZM41.3536 4.35355C41.5488 4.15829 41.5488 3.84171 41.3536 3.64645L38.1716 0.464466C37.9763 0.269204 37.6597 0.269204 37.4645 0.464466C37.2692 0.659728 37.2692 0.976311 37.4645 1.17157L40.2929 4L37.4645 6.82843C37.2692 7.02369 37.2692 7.34027 37.4645 7.53553C37.6597 7.7308 37.9763 7.7308 38.1716 7.53553L41.3536 4.35355ZM1 4.5H41V3.5H1V4.5Z"
+                      fill="white"
+                    />
+                  </svg>
+                </Button>
+                <Button variant="outline">Связаться с нами</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div class="hero__content">
+          <div class="bg-img">
+            <Image src="hero/2.png" />
+          </div>
+        </div>
+      )
+    }
+  </Fragment>
+
+  <div class="hero__advantages">
+    <div class="hero__advantages-item">
+      <div class="image">
+        <Image src="icons/15.png" />
+      </div>
+      <span>
+        Работаем с деревом <br />
+        более 15 лет
+      </span>
+    </div>
+    <div class="hero__advantages-item">
+      <div class="image">
+        <Image src="icons/production.png" />
+      </div>
+      <span>
+        Собственное <br />
+        производство
+      </span>
+    </div>
+    <div class="hero__advantages-item">
+      <div class="image">
+        <Image src="icons/support.png" />
+      </div>
+      <span>
+        Полная техническая <br />
+        поддержка
+      </span>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .hero {
+    position: relative;
+
+    &__main {
+      position: relative;
+      padding-top: rem(36);
+      width: 100%;
+
+      .group {
+        padding: rem(50);
+        width: rem(620);
+        height: rem(520);
+        background: rgba(255, 255, 255, 0.5) url(/assets/img/wood-bg.svg)
+          center/cover no-repeat;
+        backdrop-filter: blur(rem(10));
+        border-left: rem(1) solid rgba(255, 255, 255, 0.5);
+        border-right: rem(1) solid rgba(255, 255, 255, 0.5);
+        border-top: rem(1) solid rgba(255, 255, 255, 0.5);
+        border-radius: rem(40) rem(40) 0 0;
+        box-shadow: inset 0 rem(-12) rem(30) 0 rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        gap: rem(30);
+
+        @include media("lg") {
+          padding: rem(40);
+          height: rem(420);
+          width: 100%;
+          max-width: rem(610);
+        }
+        @include media("sm") {
+          padding: rem(20);
+          border-radius: rem(25) rem(25) 0 0;
+          gap: rem(20);
+        }
+        @include media("xs") {
+          padding-bottom: rem(40);
+          height: auto;
+          gap: rem(15);
+
+          .text-h2 {
+            font-size: rem(22);
+          }
+
+          .text-p {
+            font-size: rem(14);
+          }
+        }
+
+        &-actions {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: rem(40);
+
+          @include media("sm") {
+            margin-top: rem(10);
+            width: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: rem(15);
+
+            .btn {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    &__advantages {
+      margin-top: rem(36);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(20);
+
+      @include media("lg") {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include media("sm") {
+        margin-top: rem(30);
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
+      &-item {
+        padding: rem(12) rem(16);
+        border: rem(1) solid #d7d7d7;
+        border-radius: rem(60);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(30);
+
+        &:nth-child(1) .image img {
+          margin-left: rem(40);
+          height: rem(80);
+        }
+
+        &:nth-child(2) .image img {
+          margin-left: rem(30);
+          height: rem(94);
+        }
+
+        &:nth-child(3) .image img {
+          margin-left: rem(20);
+          height: rem(82);
+        }
+
+        @include media("lg") {
+          padding: rem(12);
+
+          &:nth-child(1) .image img {
+            margin-left: rem(30);
+            height: rem(70);
+          }
+
+          &:nth-child(2) .image img {
+            margin-left: rem(25);
+            height: rem(74);
+          }
+
+          &:nth-child(3) .image img {
+            margin-left: rem(20);
+            height: rem(70);
+          }
+        }
+      }
+
+      .image {
+        position: relative;
+        min-width: rem(104);
+        width: rem(104);
+        height: rem(104);
+        background: url(/assets/img/icons/circle-bg.png) center/cover no-repeat;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media("lg") {
+          min-width: rem(80);
+          width: rem(80);
+          height: rem(80);
+        }
+
+        img {
+          width: auto;
+          object-fit: contain;
+        }
+      }
+
+      span {
+        color: var(--gray);
+        font-size: rem(20);
+        font-weight: 300;
+
+        @include media("lg") {
+          font-size: rem(16);
+        }
+      }
+    }
+  }
+</style>

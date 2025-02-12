@@ -1,19 +1,21 @@
 @use "../helpers" as *;
 
-@include font-face("NunitoSans7pt", 400);
-// @include font-face("NunitoSans7pt", 500);
-// @include font-face("NunitoSans7pt", 600);
-// @include font-face("NunitoSans7pt", 700);
+@include font-face("NunitoSans", 400);
+@include font-face("NunitoSans", 500);
+@include font-face("NunitoSans", 600);
+@include font-face("NunitoSans", 700);
 @include font-face("OpenSans", 300);
 @include font-face("OpenSans", 400);
-// @include font-face("OpenSans", 700);
+@include font-face("OpenSans", 500);
+@include font-face("OpenSans", 700);
 
 :root {
   --primary: #c29b5d;
   --text-color: #1f1f1f;
   --gray: #565656;
+  --background: #e8e8e8;
   --font-primary: "OpenSans", sans-serif;
-  --font-secondary: "NunitoSans7pt", sans-serif;
+  --font-secondary: "NunitoSans", sans-serif;
   --transition-ease: 0.3s ease;
   --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   --content-width: 1240px;

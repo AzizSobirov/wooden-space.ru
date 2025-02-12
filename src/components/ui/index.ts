@@ -6,19 +6,9 @@ import Image from "./Image.astro";
 import Scroller from "./Scroller.astro";
 import Section from "./Section.astro";
 import WpNav from "./WpNav.astro";
+import Button from "./Button.astro";
 
-import { H1, H2, H3, H4 } from "./Headings";
+export * from "./Text";
 
-export {
-  Accordion,
-  Card,
-  H1,
-  H2,
-  H3,
-  H4,
-  Icon,
-  Image,
-  Scroller,
-  Section,
-  WpNav,
-};
+export { Accordion, Card, Icon, Image, Scroller, Section, WpNav, Button };
+export { default as Title } from "./Title.astro";

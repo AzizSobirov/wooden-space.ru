@@ -1,0 +1,29 @@
+---
+import { Section, Title, H2, Image, Icon } from "ui";
+---
+
+<!-- Products -->
+<Section name="products">
+  <Title>Наша продукция</Title>
+
+  .products
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .products {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+  }
+</style>

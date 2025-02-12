@@ -1,0 +1,83 @@
+---
+interface Props {
+  class?: string;
+  id?: string;
+  variant?: "primary" | "secondary" | "outline" | "link";
+  href?: string;
+}
+
+const {
+  class: className = "",
+  id,
+  variant = "primary",
+  href,
+  ...rest
+} = Astro.props;
+
+const variantClasses = {
+  primary: "btn-primary",
+  secondary: "btn-secondary",
+  outline: "btn-outline",
+  link: "btn-link",
+};
+
+const computedClass = ["btn", className, variantClasses[variant]]
+  .filter(Boolean)
+  .join(" ");
+
+const Tag = href ? "a" : "button";
+---
+
+<Tag id={id} class={computedClass} href={href} {...rest}>
+  <slot />
+</Tag>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .btn {
+    color: initial;
+    font-size: 1rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-ease);
+
+    &-secondary {
+      padding: 0 rem(44);
+      height: rem(48);
+      color: #fff;
+      background: var(--text-color);
+      border: rem(1) solid var(--text-color);
+      border-radius: 9999px;
+      gap: rem(14);
+
+      svg {
+        transition: var(--transition-ease);
+      }
+
+      &:hover {
+        color: #fff;
+        background: var(--text-color);
+
+        svg {
+          transform: translateX(rem(5));
+        }
+      }
+    }
+
+    &-outline {
+      padding: 0 rem(44);
+      height: rem(48);
+      border: rem(1) solid var(--text-color);
+      border-radius: 9999px;
+
+      &:hover {
+        color: #fff;
+        background: var(--text-color);
+      }
+    }
+  }
+</style>

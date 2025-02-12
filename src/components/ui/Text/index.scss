@@ -1,12 +1,5 @@
 @use "scss/helpers" as *;
 
-.text-h1,
-.text-h2,
-.text-h3 {
-  font-weight: 400;
-  font-family: var(--font-secondary);
-}
-
 .text-h1 {
   font-size: rem(48);
 
@@ -22,10 +15,9 @@
 }
 
 .text-h2 {
-  color: var(--primary);
-  font-size: rem(36);
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: rem(42);
+  font-weight: 600;
+  font-family: var(--font-secondary);
 
   @include media(lg) {
     font-size: rem(32);
@@ -41,6 +33,7 @@
 .text-h3 {
   color: var(--primary);
   font-size: rem(24);
+  font-weight: 600;
 
   @include media(sm) {
     font-size: rem(20);
@@ -48,12 +41,14 @@
 }
 
 .text-h4 {
-  color: var(--primary);
   font-size: rem(20);
   font-weight: 700;
-  text-transform: uppercase;
 
   @include media(sm) {
     font-size: rem(18);
   }
+}
+
+.text-p {
+  font-weight: 300;
 }

@@ -82,38 +82,58 @@ const modal = {
     }
   },
 };
-modal.init();
+// modal.init();
 
 // header
 const header = document.querySelector(".header");
 if (header) {
   const menu = header.querySelector(".header__menu");
-  const menuLinks = menu.querySelectorAll(".menu-item");
-  const services = header.querySelector(".menu-item-has-children");
-  // const servicesSubMenu = services.querySelector(".sub-menu");
+  const services = menu.querySelectorAll(".menu-item-has-children");
   const contacts = header.querySelector(".header__contact");
+  let lastScrollY = window.scrollY;
 
-  window.addEventListener("scroll", () => {
-    header.classList.toggle("sticky", window.scrollY > 0);
+  if (window.innerWidth > 1024) {
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling Down
+        header.classList.remove("up");
+        header.classList.add("down");
+      } else {
+        // Scrolling Up
+        header.classList.remove("down");
+        header.classList.add("up");
+      }
+
+      header.classList.toggle("sticky", currentScrollY > 0);
+      lastScrollY = currentScrollY;
+    });
+  }
+
+  services.forEach((service) => {
+    const subMenu = service.querySelector(".sub-menu");
+
+    service.addEventListener("mouseenter", () => {
+      subMenu.style.display = "flex"; // Ensure the submenu is visible
+
+      setTimeout(() => {
+        subMenu.dataset.state = "active";
+      }, 10);
+    });
+
+    service.addEventListener("mouseleave", () => {
+      subMenu.dataset.state = "inactive";
+
+      subMenu.addEventListener("transitionend", function handler(event) {
+        if (subMenu.dataset.state != "active") {
+          subMenu.style.display = "none"; // Hide after fade-out
+          subMenu.removeEventListener("transitionend", handler);
+        }
+      });
+    });
   });
-
-  menuLinks.forEach((link) => {
-    const a = link.querySelector("a");
-    let url = new URL(a.href);
-
-    if (window.location.pathname == url.pathname) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-
-  // const div = document.createElement("div");
-  // div.classList.add("icon-plus");
-  // div.innerHTML =
-  //   '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.9999 12.0001C15.0007 12.1317 14.9755 12.2621 14.9257 12.384C14.8759 12.5058 14.8026 12.6166 14.7099 12.7101L10.7099 16.7101C10.5216 16.8984 10.2662 17.0042 9.99994 17.0042C9.73364 17.0042 9.47824 16.8984 9.28994 16.7101C9.10164 16.5218 8.99585 16.2664 8.99585 16.0001C8.99585 15.7338 9.10164 15.4784 9.28994 15.2901L12.5899 12.0001L9.29994 8.71006C9.13611 8.51876 9.05051 8.27268 9.06023 8.02101C9.06995 7.76933 9.17428 7.53059 9.35238 7.3525C9.53047 7.1744 9.76921 7.07007 10.0209 7.06035C10.2726 7.05063 10.5186 7.13623 10.7099 7.30006L14.7099 11.3001C14.8947 11.4863 14.9988 11.7377 14.9999 12.0001Z" fill="currentColor"/></svg>';
-
-  // services.appendChild(div);
 
   // services.addEventListener("mouseenter", () => {
   //   servicesSubMenu.style.display = "flex"; // Ensure the submenu is visible
@@ -220,22 +240,6 @@ if (header) {
     tabs.forEach((tab) => {
       tab.classList.remove("active");
     });
-  });
-}
-
-// school
-const school = document.querySelector(".school");
-if (school) {
-  const video = school.querySelector("video");
-  const play = school.querySelector(".school__video-play");
-  const playBtn = play.querySelector(".icon");
-
-  playBtn.addEventListener("click", () => {
-    play.style.display = "none";
-    video.muted = false;
-    video.currentTime = 0;
-    video.controls = true;
-    video.play();
   });
 }
 

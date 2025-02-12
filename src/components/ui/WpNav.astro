@@ -1,7 +1,7 @@
 ---
 interface WP_Nav {
   name: string;
-  href: string;
+  path: string;
   children?: WP_Nav[];
 }
 
@@ -19,7 +19,7 @@ const { list } = Astro.props;
         class="menu-item"
         class:list={item.children && "menu-item-has-children"}
       >
-        <a href={item.href}>{item.name}</a>
+        <a href={item.path}>{item.name}</a>
 
         {item.children && (
           <ul class="sub-menu">
@@ -28,12 +28,12 @@ const { list } = Astro.props;
                 class="menu-item"
                 class:list={child.children && "menu-item-has-children"}
               >
-                <a href={child.href}>{child.name}</a>
+                <a href={child.path}>{child.name}</a>
                 {child.children && (
                   <ul class="sub-menu">
                     {child.children.map((subchild) => (
                       <li class="menu-item">
-                        <a href={subchild.href}>{subchild.name}</a>
+                        <a href={subchild.path}>{subchild.name}</a>
                       </li>
                     ))}
                   </ul>

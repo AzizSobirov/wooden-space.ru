@@ -7,10 +7,10 @@
 }
 
 main {
-  padding-top: rem(120);
+  padding-top: rem(240);
   width: 100%;
 
-  @include media("xl") {
+  @include media("lg") {
     padding-top: 0;
   }
 }
