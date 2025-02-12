@@ -1,12 +1,57 @@
 ---
-import { Section, Title, H2, Image, Icon } from "ui";
+import { Section, Title, H2, Image, Icon, P, Button } from "ui";
 ---
 
 <!-- Products -->
 <Section name="products">
   <Title>Наша продукция</Title>
 
-  .products
+  <div class="products__list">
+    <a href="#" class="product__list-item group">
+      <span class="group-img">
+        <Image src="products/1.png" />
+      </span>
+      <P>Декоративные балки</P>
+    </a>
+    <a href="#" class="product__list-item group">
+      <span class="group-img">
+        <Image src="products/2.png" />
+      </span>
+      <P>Термодревесина</P>
+    </a>
+    <a href="#" class="product__list-item group">
+      <span class="group-img">
+        <Image src="products/3.png" />
+      </span>
+      <P>Декоративные рейки</P>
+    </a>
+    <a href="#" class="product__list-item group">
+      <span class="group-img">
+        <Image src="products/4.png" />
+      </span>
+      <P>Кубообразный потолок</P>
+    </a>
+    <a href="#" class="product__list-item group">
+      <span class="group-img">
+        <Image src="products/5.png" />
+      </span>
+      <P>Светильники</P>
+    </a>
+  </div>
+
+  <div class="products__company">
+    <div class="products__company-text group">
+      <P
+        >Ключевыми направлениями компании являются изготовление, покраска и
+        монтаж декоративных архитектурных изделий из массива сухой и
+        термообработанной древесины.</P
+      >
+      <Button variant="outline">О КОМПАНИИ</Button>
+    </div>
+    <div class="products__company-img">
+      <Image src="company.png" />
+    </div>
+  </div>
 </Section>
 
 <style lang="scss" is:global>
@@ -23,6 +68,146 @@ import { Section, Title, H2, Image, Icon } from "ui";
 
       @include media("sm") {
         gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: rem(45);
+
+      @include media("lg") {
+        gap: rem(30);
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      .group {
+        width: rem(168);
+
+        @include media("sm") {
+          width: rem(140);
+        }
+        @include media("xs") {
+          width: calc(100% / 2 - rem(12.5));
+        }
+      }
+
+      .group-img {
+        position: relative;
+        width: rem(168);
+        height: rem(168);
+        border-radius: rem(25);
+
+        @include media("lg") {
+          width: rem(150);
+          height: rem(150);
+          border-radius: rem(20);
+        }
+        @include media("sm") {
+          width: rem(120);
+          height: rem(120);
+          border-radius: rem(15);
+        }
+        @include media("xs") {
+          width: 100%;
+          height: rem(150);
+        }
+        @include media("xxs") {
+          height: rem(130);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: rem(10);
+          left: rem(10);
+          width: 100%;
+          height: 100%;
+          border: rem(1) solid #d7d7d7;
+          border-radius: inherit;
+          pointer-events: none;
+
+          @include media("xs") {
+            top: rem(8);
+            left: rem(8);
+          }
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+          object-fit: cover;
+        }
+      }
+
+      .text-p {
+        @include media("1025px", min-width) {
+          font-size: rem(20);
+        }
+      }
+    }
+
+    &__company {
+      margin-top: rem(40);
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(20);
+
+      &-text {
+        width: 100%;
+        max-width: rem(520);
+        gap: rem(50);
+
+        @include media("1025px", min-width) {
+          .text-p {
+            font-size: rem(20);
+            line-height: 200%;
+          }
+        }
+      }
+
+      &-img {
+        position: relative;
+        left: rem(100);
+        height: rem(418);
+        border-radius: rem(140);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: rem(-22);
+          left: rem(-40);
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          border: rem(1) solid #d7d7d7;
+          border-radius: inherit;
+          pointer-events: none;
+        }
+
+        @include media("2xl") {
+          left: rem(120);
+          border-radius: rem(140) 0 0 rem(140);
+
+          &::before {
+            left: rem(-30);
+          }
+        }
+
+        img {
+          width: rem(830);
+          height: 100%;
+          object-fit: cover;
+          border-radius: inherit;
+        }
       }
     }
   }

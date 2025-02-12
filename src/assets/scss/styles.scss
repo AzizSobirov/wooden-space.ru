@@ -22,9 +22,12 @@ section {
     padding-top: 0;
   }
 
-  @include media("sm") {
+  @include media("lg") {
     padding: rem(35) 0;
+  }
+  @include media("sm") {
+    padding: rem(25) 0;
   }
 }
 
-// @include show(".train", true, false);
+// @include show(".products", true, false);
