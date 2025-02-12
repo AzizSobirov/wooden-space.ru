@@ -92,7 +92,7 @@ import { Section, Title, H2, Image, Icon, P, Button } from "ui";
         @include media("sm") {
           width: rem(140);
         }
-        @include media("xs") {
+        @include media("520px") {
           width: calc(100% / 2 - rem(12.5));
         }
       }
@@ -161,16 +161,38 @@ import { Section, Title, H2, Image, Icon, P, Button } from "ui";
       justify-content: space-between;
       gap: rem(20);
 
+      @include media("lg") {
+        margin-top: rem(30);
+        flex-direction: column-reverse;
+      }
+      @include media("sm") {
+        margin-top: rem(20);
+      }
+
       &-text {
         width: 100%;
         max-width: rem(520);
         gap: rem(50);
 
-        @include media("1025px", min-width) {
+        @include media("769px", min-width) {
           .text-p {
             font-size: rem(20);
             line-height: 200%;
           }
+        }
+        @include media("xl") {
+          max-width: rem(480);
+
+          .text-p {
+            line-height: 1.8;
+          }
+        }
+        @include media("1080px") {
+          max-width: rem(380);
+        }
+        @include media("lg") {
+          max-width: 100%;
+          gap: rem(30);
         }
       }
 
@@ -201,12 +223,38 @@ import { Section, Title, H2, Image, Icon, P, Button } from "ui";
             left: rem(-30);
           }
         }
+        @include media("xl") {
+          left: rem(120);
+        }
+        @include media("lg") {
+          left: 0;
+          height: auto;
+          border-radius: rem(80);
+
+          &::before {
+            top: rem(-20);
+            left: rem(-20);
+          }
+        }
+        @include media("sm") {
+          border-radius: rem(30);
+
+          &::before {
+            top: rem(-10);
+            left: rem(-10);
+          }
+        }
 
         img {
           width: rem(830);
           height: 100%;
           object-fit: cover;
           border-radius: inherit;
+
+          @include media("lg") {
+            width: 100%;
+            height: auto;
+          }
         }
       }
     }

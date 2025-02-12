@@ -169,6 +169,15 @@ const { isMain = false } = Astro.props;
       grid-template-columns: repeat(3, 1fr);
       gap: rem(20);
 
+      @include media("lg") {
+        grid-template-columns: 1fr 1fr;
+      }
+      @include media("sm") {
+        margin-top: rem(30);
+        grid-template-columns: 1fr;
+        gap: rem(15);
+      }
+
       &::after {
         content: "";
         position: absolute;
@@ -180,15 +189,15 @@ const { isMain = false } = Astro.props;
         height: rem(750);
         background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
         pointer-events: none;
-      }
 
-      @include media("lg") {
-        grid-template-columns: 1fr 1fr;
-      }
-      @include media("sm") {
-        margin-top: rem(30);
-        grid-template-columns: 1fr;
-        gap: rem(15);
+        @include media("lg") {
+          width: rem(500);
+          height: rem(500);
+        }
+        @include media("sm") {
+          width: rem(350);
+          height: rem(350);
+        }
       }
 
       &-item {

@@ -2,7 +2,7 @@ import { path, componentDir, createFile } from "./helpers.js";
 
 // Get the component name from command line arguments
 const componentShortName = process.argv[2].toLowerCase();
-const componentName = `The${process.argv[2].charAt(0).toUpperCase() + process.argv[2].slice(1)}`;
+const componentName = `${process.argv[2].charAt(0).toUpperCase() + process.argv[2].slice(1)}`;
 
 // Validate the component name
 if (!componentName) {
@@ -13,16 +13,16 @@ if (!componentName) {
 // Content templates for the files
 const templates = {
   astro: `---
-import { Section, H2, Image, Icon } from "ui";
+import { Section, Title, Image, Icon, Button } from "ui";
 ---
 
-<!-- Hero -->
-<Section name="hero"> .hero </Section>
+<!-- ${componentName} -->
+<Section name="${componentShortName}"> .${componentShortName} </Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
-  .hero {
+  .${componentShortName} {
     position: relative;
   }
 </style>

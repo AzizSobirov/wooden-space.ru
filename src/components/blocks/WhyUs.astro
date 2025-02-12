@@ -1,0 +1,169 @@
+---
+import { Section, Title, H4, P, Image, Icon, Button } from "ui";
+---
+
+<!-- W -->
+<Section name="whyus">
+  <div class="whyus__header">
+    <Title>Почему выбирают нас</Title>
+    <P>
+      Всё это не просто красивые слова, фиксируем гарантии для клиента в
+      договоре
+    </P>
+  </div>
+
+  <div class="whyus__list">
+    <div class="whyus__list-item group">
+      <Image src="icons/1.png" />
+      <H4>Высокий стандарт сервиса</H4>
+      <P>
+        Мы дорожим своей репутацией. Если вы пришли к нам не по рекомендации, то
+        мы сделаем все, чтобы вы порекомендовали нас.
+      </P>
+    </div>
+    <div class="whyus__list-item group">
+      <Image src="icons/2.png" />
+      <H4>Более 15 лет опыта</H4>
+      <P>
+        Мы профессионально ответим на технические вопросы любой сложности о
+        работе с деревом и применении его в архитектуре. Мы знаем своё дело!
+      </P>
+    </div>
+    <div class="whyus__list-item group">
+      <Image src="icons/3.png" />
+      <H4>Соблюдение договорённостей</H4>
+      <P>
+        Это наш главный приоритет. Мы готовы нести полную ответственность за
+        качество материала и работ от его поставки до последнего вбитого метиза.
+      </P>
+    </div>
+    <div class="whyus__list-item group">
+      <Image src="icons/4.png" />
+      <H4>Профессионализм</H4>
+      <P>
+        Мы знаем, как решить даже самый притязательный запрос заказчика на
+        ответственных объектах. Мы изготовим не только погонаж, но и столярные
+        изделия любой сложности
+      </P>
+    </div>
+    <div class="whyus__list-item group">
+      <Image src="icons/5.png" />
+      <H4>Забота о природе</H4>
+      <P>
+        Мы заботимся об окружающей среде и работаем с древесиной высшего
+        качества. К моменту, когда придёт время заменить доску на фасаде или
+        террасе, или в интерьере, уже успеет вырасти новое дерево
+      </P>
+    </div>
+    <div class="whyus__list-item group">
+      <Image src="icons/6.png" />
+      <H4>Гарантии </H4>
+      <P>
+        Мы уверены в качестве своей продукции и даём расширенные гарантии. Не на
+        словах, а на деле. Ваше спокойствие того стоит
+      </P>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .whyus {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-105%, 0);
+      z-index: -2;
+      width: rem(750);
+      height: rem(750);
+      background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
+      pointer-events: none;
+
+      @include media("lg") {
+        width: rem(500);
+        height: rem(500);
+      }
+      @include media("sm") {
+        left: 65%;
+        width: rem(350);
+        height: rem(350);
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(80);
+
+      @include media("sm") {
+        gap: rem(60);
+      }
+    }
+
+    &__header {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(15);
+
+      @include media("sm") {
+        gap: rem(10);
+      }
+
+      .text-p {
+        margin-left: rem(52);
+
+        @include media("sm") {
+          margin-left: rem(42);
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: rem(65) rem(20);
+
+      @include media("sm") {
+        gap: rem(45) rem(20);
+      }
+
+      &-item {
+        position: relative;
+        padding: rem(45) rem(25);
+        color: #fff;
+        background-color: var(--primary);
+        background-image: url(/assets/img/card-bg.png);
+        background-size: cover;
+        border-radius: rem(44);
+        flex: 1 0 rem(320);
+        gap: rem(10);
+
+        @include media("lg") {
+          flex-basis: rem(280);
+        }
+        @include media("xs") {
+          flex-basis: 100%;
+        }
+
+        img {
+          position: absolute;
+          top: rem(-30);
+          height: rem(62);
+          width: auto;
+        }
+      }
+    }
+  }
+</style>
