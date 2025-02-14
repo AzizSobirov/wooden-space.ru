@@ -40,10 +40,25 @@ const Tag = href ? "a" : "button";
     font-size: 1rem;
     font-weight: 300;
     text-transform: uppercase;
+    white-space: nowrap;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition-ease);
+
+    &-primary {
+      padding: 0 rem(44);
+      height: rem(48);
+      color: #fff;
+      background: var(--primary);
+      border: rem(1) solid var(--primary);
+      border-radius: 9999px;
+      box-shadow: 0 0 rem(14) 0 rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
 
     &-secondary {
       padding: 0 rem(44);

@@ -1,14 +1,67 @@
 ---
-import { Section, Title, Image, Icon, Button } from "ui";
+import { Section, Title, H2, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Rate -->
-<Section name="rate"> .rate </Section>
+<Section name="rate">
+  <div class="bg-img">
+    <Image src="rate-bg.png" />
+  </div>
+
+  <div class="group">
+    <H2>Оцените качество материалов!</H2>
+    <P>
+      Мы бесплатно предоставим вам образцы нашей продукции, чтобы вы могли
+      убедиться в высоком качестве материала
+    </P>
+  </div>
+  <Button data-modal="callback">Заказать образцы</Button>
+</Section>
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .rate {
     position: relative;
+
+    .bg-img {
+      top: rem(10);
+      height: calc(100% - rem(20));
+
+      @include media("sm") {
+        top: 0;
+        height: 100%;
+      }
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(30) rem(20);
+
+      @include media("sm") {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .group {
+      gap: rem(30);
+
+      @include media("lg") {
+        max-width: rem(480);
+        gap: rem(20);
+      }
+
+      .text-p {
+        width: 100%;
+        max-width: rem(580);
+
+        @include media("xs") {
+          font-size: rem(14);
+        }
+      }
+    }
   }
 </style>
