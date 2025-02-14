@@ -40,3 +40,54 @@ export const navigations = [
     path: "/contacts",
   },
 ];
+
+export const projects = [
+  {
+    name: 'Оформление ресепшена в офисе БЦ "Данилов Плаза"',
+    image: "/projects/1.png",
+  },
+  {
+    name: "projects 2",
+    image: "/projects/2.png",
+  },
+  {
+    name: "project 2",
+    image: "/projects/3.png",
+  },
+  {
+    name: "project 4",
+    image: "/projects/4.png",
+  },
+  {
+    name: "project 5",
+    image: "/projects/5.png",
+  },
+  {
+    name: "project 6",
+    image: "/projects/6.png",
+  },
+  {
+    name: 'Оформление ресепшена в офисе БЦ "Данилов Плаза"',
+    image: "/projects/1.png",
+  },
+  {
+    name: "projects 2",
+    image: "/projects/2.png",
+  },
+  {
+    name: "project 2",
+    image: "/projects/3.png",
+  },
+  {
+    name: "project 4",
+    image: "/projects/4.png",
+  },
+  {
+    name: "project 5",
+    image: "/projects/5.png",
+  },
+  {
+    name: "project 6",
+    image: "/projects/6.png",
+  },
+];

@@ -1,10 +1,10 @@
 ---
-import { Section, Title, H2, Image, Icon, P, Button } from "ui";
+import { Section, Header, H2, Image, Icon, P, Button } from "ui";
 ---
 
 <!-- Products -->
 <Section name="products">
-  <Title>Наша продукция</Title>
+  <Header title="Наша продукция" />
 
   <div class="products__list">
     <a href="#" class="product__list-item group">
@@ -95,6 +95,12 @@ import { Section, Title, H2, Image, Icon, P, Button } from "ui";
         @include media("520px") {
           width: calc(100% / 2 - rem(12.5));
         }
+
+        &:hover {
+          .group-img img {
+            transform: scale(1.05);
+          }
+        }
       }
 
       .group-img {
@@ -143,6 +149,7 @@ import { Section, Title, H2, Image, Icon, P, Button } from "ui";
           height: 100%;
           border-radius: inherit;
           object-fit: cover;
+          transition: var(--transition-ease);
         }
       }
 

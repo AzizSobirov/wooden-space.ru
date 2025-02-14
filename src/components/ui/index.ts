@@ -12,3 +12,4 @@ export * from "./Text";
 
 export { Accordion, Card, Icon, Image, Scroller, Section, WpNav, Button };
 export { default as Title } from "./Title.astro";
+export { default as Header } from "./Header.astro";

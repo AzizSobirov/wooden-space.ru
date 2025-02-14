@@ -1,0 +1,35 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Team -->
+<Section name="team">
+  <Header
+    title="Наша команда"
+    desc="Все люди в нашей команде отдаются своему делу целиком и полностью, профессионально выполняя возложенные на них задачи"
+  />
+
+  <div class="team__list">
+    <div class="card"></div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .team {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+  }
+</style>

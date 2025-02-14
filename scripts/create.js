@@ -13,7 +13,7 @@ if (!componentName) {
 // Content templates for the files
 const templates = {
   astro: `---
-import { Section, Title, Image, Icon, Button } from "ui";
+import { Section, Header, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- ${componentName} -->

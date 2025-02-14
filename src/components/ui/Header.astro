@@ -1,0 +1,40 @@
+---
+import { Title, P } from "./index";
+
+interface Props {
+  title: string;
+  desc?: string;
+}
+
+const { title, desc } = Astro.props;
+---
+
+<div class="section-header">
+  <Title>{title}</Title>
+  {desc && <P>{desc}</P>}
+</div>
+
+<style lang="scss">
+  @use "scss/helpers" as *;
+
+  .section-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(15);
+
+    @include media("sm") {
+      gap: rem(10);
+    }
+
+    .text-p {
+      margin-left: rem(52);
+
+      @include media("sm") {
+        margin-left: rem(42);
+        font-size: rem(14);
+      }
+    }
+  }
+</style>
