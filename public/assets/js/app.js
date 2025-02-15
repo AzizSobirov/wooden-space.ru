@@ -82,7 +82,7 @@ const modal = {
     }
   },
 };
-// modal.init();
+modal.init();
 
 // header
 const header = document.querySelector(".header");
@@ -359,10 +359,21 @@ function successSend() {
   }, 3000);
 }
 
-const forms = document.querySelectorAll("form");
+const forms = document.querySelectorAll(".the-form");
 forms.forEach((form) => {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     successSend();
   });
+});
+
+let teamSwiper = new Swiper(".team .team__list", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  breakpoints: {
+    1025: {
+      slidesPerView: 4,
+      spaceBetween: 20,
+    },
+  },
 });

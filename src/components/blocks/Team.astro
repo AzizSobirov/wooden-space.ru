@@ -1,5 +1,5 @@
 ---
-import { Section, Header, P, Image, Icon, Button } from "ui";
+import { Section, Header, H3, P, Image, Icon, Button } from "ui";
 ---
 
 <!-- Team -->
@@ -9,8 +9,42 @@ import { Section, Header, P, Image, Icon, Button } from "ui";
     desc="Все люди в нашей команде отдаются своему делу целиком и полностью, профессионально выполняя возложенные на них задачи"
   />
 
-  <div class="team__list">
-    <div class="card"></div>
+  <div class="team__list swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide card">
+        <div class="card__img">
+          <div class="bg-img">
+            <Image src="team/1.png" />
+          </div>
+
+          <Image src="team/1.png" />
+        </div>
+
+        <div class="card__content">
+          <H3 class="user-name">Дмитрий Сюбаров</H3>
+          <P class="user-role">Лидер и генеральный директор</P>
+          <P class="user-job">
+            Инженер-строитель, архитектор, генератор идей в решении сложных
+            технических задач.
+          </P>
+        </div>
+      </div>
+      <div class="swiper-slide card">
+        <div class="card__img">
+          <div class="bg-img">
+            <Image src="team/2.png" />
+          </div>
+
+          <Image src="team/2.png" />
+        </div>
+
+        <div class="card__content">
+          <H3 class="user-name">Анна Мельник</H3>
+          <P class="user-role">Коммерческий директор</P>
+          <P class="user-job"> В курсе всех дел. </P>
+        </div>
+      </div>
+    </div>
   </div>
 </Section>
 
@@ -29,6 +63,93 @@ import { Section, Header, P, Image, Icon, Button } from "ui";
 
       @include media("sm") {
         gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: rem(30) rem(20);
+
+      @include media("lg") {
+        grid-template-columns: repeat(2, 1fr);
+        overflow: visible;
+      }
+    }
+
+    .card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(15);
+
+      @include media("lg") {
+        width: rem(280);
+      }
+
+      &__img {
+        position: relative;
+        padding: rem(15);
+        width: 100%;
+        border-radius: rem(24);
+        overflow: hidden;
+
+        .bg-img {
+          filter: blur(rem(5));
+        }
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border: rem(2) solid var(--primary);
+          border-radius: rem(15);
+        }
+      }
+
+      &__content {
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(10);
+
+        .user-job {
+          position: relative;
+          padding: rem(8) rem(12);
+          width: 100%;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: rem(10);
+            border: rem(1) solid var(--primary);
+            border-bottom: none;
+            border-radius: rem(12) rem(12) 0 0;
+          }
+        }
+
+        @include media("1280px", min-width) {
+          .user-role {
+            font-size: rem(18);
+          }
+        }
+        @include media("lg") {
+          .user-name {
+            font-size: rem(20);
+          }
+
+          .user-job {
+            padding: rem(5);
+            font-size: rem(14);
+          }
+        }
       }
     }
   }

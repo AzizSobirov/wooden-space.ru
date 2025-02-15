@@ -14,7 +14,7 @@ const { title, desc } = Astro.props;
   {desc && <P>{desc}</P>}
 </div>
 
-<style lang="scss">
+<style lang="scss" is:global>
   @use "scss/helpers" as *;
 
   .section-header {

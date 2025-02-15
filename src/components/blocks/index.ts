@@ -4,3 +4,4 @@ export { default as WhyUs } from "./WhyUs.astro";
 export { default as Rate } from "./Rate.astro";
 export { default as Projects } from "./Projects.astro";
 export { default as Team } from "./Team.astro";
+export { default as Application } from "./Application.astro";

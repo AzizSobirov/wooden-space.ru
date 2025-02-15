@@ -57,7 +57,8 @@
         height: rem(50);
       }
       @include media("xs") {
-        height: rem(40);
+        margin: 0 auto;
+        height: rem(52);
       }
 
       img {
@@ -123,8 +124,8 @@
       @include media("lg") {
         font-size: rem(20);
       }
-      @include media("xxs") {
-        font-size: rem(18);
+      @include media("xs") {
+        display: none;
       }
     }
   }
@@ -155,6 +156,7 @@
       }
 
       svg {
+        min-width: rem(16);
         width: rem(16);
         height: rem(11);
       }
