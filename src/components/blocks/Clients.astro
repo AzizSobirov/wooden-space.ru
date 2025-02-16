@@ -1,0 +1,77 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Clients -->
+<Section name="clients">
+  <Header
+    title="Наши постоянные клиенты"
+    desc="Мы всегда настроены на долгосрочное взаимовыгодное сотрудничество"
+  />
+
+  <div class="clients__list">
+    <Image src="clients/mosarh.svg" />
+    <Image src="clients/wowdom.png" />
+    <Image src="clients/gikalo.png" />
+    <Image src="clients/skolkovo.png" />
+    <Image src="clients/moskovskiy-m.png" />
+    <Image src="clients/eka.svg" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .clients {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: rem(30) rem(20);
+
+      @include media("sm") {
+        justify-content: center;
+        gap: rem(25) rem(20);
+      }
+
+      img {
+        max-height: rem(80);
+        max-width: 100%;
+        object-fit: contain;
+
+        @include media("lg") {
+          max-height: rem(60);
+        }
+        @include media("md") {
+          flex: 1 0 rem(180);
+        }
+        @include media("sm") {
+          max-height: rem(50);
+          flex-basis: rem(100);
+
+          &:first-child {
+            max-height: rem(40);
+          }
+        }
+        @include media("xs") {
+          flex-basis: rem(60);
+        }
+      }
+    }
+  }
+</style>

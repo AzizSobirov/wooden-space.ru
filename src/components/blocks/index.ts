@@ -5,3 +5,6 @@ export { default as Rate } from "./Rate.astro";
 export { default as Projects } from "./Projects.astro";
 export { default as Team } from "./Team.astro";
 export { default as Application } from "./Application.astro";
+export { default as Acquaintance } from "./Acquaintance.astro";
+export { default as Clients } from "./Clients.astro";
+export { default as Production } from "./Production.astro";

@@ -1,0 +1,99 @@
+---
+import { Section, Header, H2, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Acquaintance -->
+<Section name="acquaintance">
+  <div class="bg-img">
+    <Image src="rate-bg.png" />
+  </div>
+
+  <div class="group">
+    <H2>Давайте познакомимся!</H2>
+    <P>
+      Вы можете скачать акутальную информацию о нас и нашей продукции нажав на
+      кнопку
+    </P>
+  </div>
+
+  <div class="acquaintance-btns">
+    <Button href="/prices" variant="outline">наш прайс-лист</Button>
+    <Button href="/presentaion" variant="outline">Презентация</Button>
+    <Button href="/pasport-quality" variant="outline">паспорт качества</Button>
+  </div>
+
+  <style lang="scss" is:global>
+    @use "scss/helpers" as *;
+
+    .acquaintance {
+      position: relative;
+
+      .bg-img {
+        top: rem(10);
+        height: calc(100% - rem(20));
+
+        @include media("sm") {
+          top: 0;
+          height: 100%;
+        }
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(30) rem(20);
+
+        @include media("xl") {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      .group {
+        gap: rem(30);
+
+        @include media("lg") {
+          max-width: rem(480);
+          gap: rem(20);
+        }
+
+        .text-p {
+          width: 100%;
+          max-width: rem(580);
+        }
+      }
+
+      &-btns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: rem(25);
+
+        @include media("xl") {
+          width: 100%;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+        }
+        @include media("sm") {
+          gap: rem(15);
+        }
+
+        .btn {
+          width: rem(205);
+          color: var(--primary);
+          border-color: var(--primary);
+
+          @include media("xs") {
+            width: 100%;
+          }
+
+          &:hover {
+            color: #fff;
+            background: var(--primary);
+          }
+        }
+      }
+    }
+  </style>
+</Section>
