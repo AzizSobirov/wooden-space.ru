@@ -8,3 +8,4 @@ export { default as Application } from "./Application.astro";
 export { default as Acquaintance } from "./Acquaintance.astro";
 export { default as Clients } from "./Clients.astro";
 export { default as Production } from "./Production.astro";
+export { default as Faq } from "./Faq.astro";

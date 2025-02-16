@@ -1,5 +1,5 @@
 ---
-import { H4 } from "ui";
+import { H4, P } from "ui";
 
 interface Props {
   title: string;
@@ -14,22 +14,23 @@ const { title } = Astro.props;
     <div class="accordion__header-title">{title}</div>
     <div class="accordion__header-icon icon">
       <svg
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
+        width="22"
+        height="11"
+        viewBox="0 0 22 11"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle cx="20" cy="20" r="19.5" stroke="currentColor"></circle>
         <path
-          d="M28.0282 20.6034C28.2234 20.4081 28.2234 20.0915 28.0282 19.8963L24.8462 16.7143C24.6509 16.519 24.3343 16.519 24.1391 16.7143C23.9438 16.9095 23.9438 17.2261 24.1391 17.4214L26.9675 20.2498L24.1391 23.0782C23.9438 23.2735 23.9438 23.5901 24.1391 23.7854C24.3343 23.9806 24.6509 23.9806 24.8462 23.7854L28.0282 20.6034ZM12.8254 20.7498H27.6746L27.6746 19.7498H12.8254L12.8254 20.7498Z"
-          fill="currentColor"></path>
+          d="M21 0.5L11 10.5L1 0.500002"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
       </svg>
     </div>
   </div>
   <div class="accordion__body">
     <div class="accordion__content">
-      <slot />
+      <P><slot /></P>
     </div>
     <slot name="footer" />
   </div>
@@ -43,18 +44,24 @@ const { title } = Astro.props;
 
     &__header {
       position: relative;
+      padding: rem(18) 0;
       width: 100%;
+      color: var(--primary);
       cursor: pointer;
+      border-bottom: rem(1) solid var(--primary);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: rem(20);
+
+      @include media("xs") {
+        padding: rem(15) 0;
+        gap: rem(15);
+      }
 
       &-title {
         color: inherit;
         font-size: rem(20);
-        font-weight: 700;
-        font-family: var(--font-secondary);
         transition: var(--transition-ease);
 
         @include media("xl") {
@@ -62,17 +69,16 @@ const { title } = Astro.props;
         }
         @include media("sm") {
           font-size: rem(16);
-          font-weight: 600;
         }
       }
 
       &-icon {
         color: inherit;
         transition: var(--transition-ease);
-        --icon-size: #{rem(40)};
+        --icon-size: #{rem(20)};
 
         @include media("sm") {
-          --icon-size: #{rem(32)};
+          --icon-size: #{rem(16)};
         }
       }
 
@@ -80,7 +86,7 @@ const { title } = Astro.props;
         color: var(--primary);
 
         .icon {
-          transform: rotate(90deg);
+          transform: rotate(180deg);
         }
       }
     }
@@ -101,6 +107,14 @@ const { title } = Astro.props;
       ul {
         padding-left: 24px;
         list-style-type: disc;
+      }
+
+      @include media("sm") {
+        padding: rem(15) 0;
+
+        .text-p {
+          font-size: rem(15);
+        }
       }
     }
   }
