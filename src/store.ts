@@ -91,3 +91,31 @@ export const projects = [
     image: "/projects/6.png",
   },
 ];
+
+export const prices = [
+  {
+    name: "Термососна",
+    unit: "м",
+    price: "от 1200 р",
+  },
+  {
+    name: "Ясень",
+    unit: "м",
+    price: "от 1200 р",
+  },
+  {
+    name: "Термоясень",
+    unit: "м",
+    price: "от 1200 р",
+  },
+  {
+    name: "Дуб",
+    unit: "м",
+    price: "от 1200 р",
+  },
+  {
+    name: "Лиственница",
+    unit: "м",
+    price: "от 1200 р",
+  },
+];

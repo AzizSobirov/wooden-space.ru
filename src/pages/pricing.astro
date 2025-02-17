@@ -1,0 +1,38 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { P } from "ui";
+import { prices } from "@/store";
+---
+
+<App title="Прайс-лист">
+  <main>
+    <Blocks.Panel title="Прайс-лист">
+      <div class="panel__pricing">
+        <P>
+          На данной странице размещен прайс-лист нашей продукции, который мы
+          постоянно обновляем.
+        </P>
+      </div>
+    </Blocks.Panel>
+    <Blocks.Price title="Декоративные балки" prices={prices} />
+    <Blocks.Price title="Декоративные рейки" prices={prices} />
+    <Blocks.Price title="Термодревесина " prices={prices} />
+    <Blocks.Price title="Декоративные балки" prices={prices} />
+    <Blocks.Price title="Кубообразный потолок" prices={prices} />
+    <Blocks.Price title="Светильники" prices={prices} />
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .panel__pricing {
+    width: 100%;
+
+    .text-p {
+      width: 100%;
+      max-width: rem(665);
+    }
+  }
+</style>

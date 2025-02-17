@@ -1,0 +1,83 @@
+---
+import { Section, Header, H2, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!-- Panel -->
+<Section name="panel">
+  <div class="panel__title">
+    <H2>{title}</H2>
+  </div>
+
+  <div class="panel__content">
+    <slot />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .panel {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("lg") {
+        gap: rem(30);
+      }
+      @include media("xs") {
+        gap: rem(20);
+      }
+    }
+
+    &__title {
+      position: relative;
+      padding: rem(35) rem(50);
+      width: 100%;
+      color: #fff;
+      background: var(--primary);
+      border-radius: rem(25);
+
+      @include media("lg") {
+        margin-top: rem(10);
+        padding: rem(20) rem(35);
+      }
+      @include media("xs") {
+        padding: rem(15) rem(20);
+        border-radius: rem(20);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: calc(100% - rem(460));
+        height: 100%;
+        background: url("/assets/img/panel-bg.png") repeat-x left/contain;
+        pointer-events: none;
+
+        @include media("lg") {
+          width: 50%;
+        }
+        @include media("sm") {
+          background-size: cover;
+        }
+      }
+
+      .text-h2 {
+        position: relative;
+        font-weight: 300;
+      }
+    }
+  }
+</style>

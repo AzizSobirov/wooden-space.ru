@@ -18,7 +18,7 @@ main {
 section {
   padding: rem(50) 0;
 
-  &.pt-0 {
+  &:first-child {
     padding-top: 0;
   }
 
