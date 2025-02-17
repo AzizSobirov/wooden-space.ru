@@ -1,0 +1,174 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Our Expertise -->
+<Section name="expertise">
+  <Header
+    title="Направления нашей деятельности"
+    desc="Ключевыми направлениями в компании «WOODEN SPACE» стали:"
+  />
+
+  <div class="expertise__list">
+    <div class="expertise__list-item group">
+      <div class="group-img">
+        <Image src="expertise/1.png" />
+      </div>
+      <P>
+        Изготовление и монтаж декоративных архитектурных изделий из массива
+        сухой и термообработанной древесины, таких как, доска для фасада и
+        террас, декоративные рейки, фальшбалки, сложные клееные изделия из
+        древесины и многое другое.
+      </P>
+    </div>
+
+    <div class="expertise__list-item group">
+      <div class="group-img">
+        <Image src="expertise/2.png" />
+      </div>
+      <P>
+        Нестандартные решения из древесины - сращивание, склейка, изгиб,
+        фрезеровка на станках с ЧПУ.
+      </P>
+    </div>
+
+    <div class="expertise__list-item group">
+      <div class="group-img">
+        <Image src="expertise/3.png" />
+      </div>
+      <P> Производство линейных светильников по индивидуальному дизайну. </P>
+    </div>
+
+    <div class="expertise__list-item group">
+      <div class="group-img">
+        <Image src="expertise/4.png" />
+      </div>
+      <P> Изготовление кубообразных реек с ламинацией под дерево </P>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .expertise {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(60);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      position: relative;
+      width: 100%;
+      max-width: rem(970);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(30) rem(60);
+
+      @include media("xl") {
+        max-width: rem(780);
+      }
+      @include media("md") {
+        grid-template-columns: 1fr;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(70%, -30%);
+        z-index: -2;
+        width: rem(750);
+        height: rem(750);
+        background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
+        pointer-events: none;
+
+        @include media("lg") {
+          width: rem(500);
+          height: rem(500);
+        }
+        @include media("sm") {
+          left: 65%;
+          width: rem(350);
+          height: rem(350);
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(105%, -55%);
+        z-index: -1;
+        pointer-events: none;
+        width: rem(765);
+        height: rem(765);
+        background: url("/assets/img/woods.png") center/contain no-repeat;
+
+        @include media("lg") {
+          display: none;
+        }
+      }
+
+      .group {
+        gap: rem(10);
+
+        &:first-child,
+        &:last-child {
+          grid-column-start: span 2;
+
+          @include media("lg") {
+            grid-column-start: span 1;
+          }
+        }
+
+        &-img {
+          position: relative;
+          width: 100%;
+          --base-radius: #{rem(26)};
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: rem(-13);
+            left: rem(-13);
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            border: rem(1) solid var(--primary);
+            border-radius: calc(var(--base-radius) + rem(10));
+            pointer-events: none;
+
+            @include media("sm") {
+              top: rem(-8);
+              left: rem(-8);
+              border-radius: calc(var(--base-radius) + rem(5));
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: var(--base-radius);
+
+            @include media("md") {
+              min-height: rem(180);
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

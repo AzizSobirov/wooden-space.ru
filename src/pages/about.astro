@@ -1,0 +1,189 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { H3, P, Image } from "ui";
+---
+
+<App title="О компании">
+  <main>
+    <Blocks.Panel title="О компании">
+      <div class="panel__about group">
+        <div class="panel__about-wrapper">
+          <div class="panel__about-text group">
+            <H3
+              >Как известно, за любой идеей стоят люди. <br /> И именно люди превращают
+              идею в продукт.
+            </H3>
+            <P>
+              Коллектив компании <strong>WOODEN SPACE</strong> – это команда единомышленников,
+              которые горят тем, что делают.
+              <br />
+              <br />
+              Мы правда знаем о дереве все и наша миссия — это современная и безопасная
+              среда обитания человека, будь то квартира, загородный дом, офис или
+              ресторан. Ведь никакой другой отделочный материал не вдохнёт столько
+              тепла и шарма в интерьер, как массив натуральной древесины.
+            </P>
+          </div>
+          <div class="panel__about-img">
+            <Image src="person.png" />
+          </div>
+        </div>
+        <P>
+          Главное для нас – точное соблюдение договоренностей и доверие наших
+          клиентов. За более чем 15 лет работы мы показали себя надежным и
+          добросовестным производителем, поставщиком и партнером.
+          <br /><br />
+          Нам доверили воплощение своих идей такие компании, как: VOLVO CARS, ГК
+          МИРАТОРГ, АО ВкусВилл, AUCHAN, Инновационный центр СКОЛКОВО, Московский
+          Метрополитен и множество других компаний и сотни довольных частных клиентов.
+          <br /><br />
+          <strong> «WOODEN SPACE» - воплощение мечты в деталях!</strong>
+        </P>
+      </div>
+    </Blocks.Panel>
+    <Blocks.OurExpertise />
+    <Blocks.Acquaintance />
+    <Blocks.Team />
+    <Blocks.WhyUs />
+    <Blocks.History />
+    <Blocks.Clients />
+    <Blocks.Application />
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .panel__about {
+    padding-left: rem(50);
+    padding-right: rem(100);
+    width: 100%;
+
+    @include media("lg") {
+      padding-top: rem(10);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    &-wrapper {
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: rem(40);
+
+      @include media("lg") {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      @include media("xs") {
+        gap: rem(20);
+      }
+    }
+
+    &-text {
+      position: relative;
+      width: 100%;
+      max-width: rem(655);
+
+      @include media("xl") {
+        max-width: rem(480);
+      }
+      @include media("lg") {
+        max-width: 100%;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-65%, -50%);
+        z-index: -1;
+        width: rem(49);
+        height: rem(47);
+        background-image: url('data:image/svg+xml,<svg width="49" height="47" viewBox="0 0 49 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M22.9188 6.82557C13.8778 12.6125 9.48747 18.5848 9.48747 28.5635C10.0828 28.3781 10.6036 28.3781 11.1245 28.3781C15.8497 28.3781 20.426 31.5683 20.426 37.3181C20.426 43.2905 16.5938 47 11.1245 47C4.05543 47 0 41.3615 0 31.2344C0 17.1381 6.51101 7.01105 18.6773 0L22.9188 6.82557ZM48.9628 6.82557C39.9218 12.6125 35.5315 18.5848 35.5315 28.5635C36.1268 28.3781 36.6477 28.3781 37.1686 28.3781C41.8937 28.3781 46.47 31.5683 46.47 37.3181C46.47 43.2905 42.6378 47 37.1686 47C30.1367 47 26.0812 41.3615 26.0812 31.2344C26.0812 17.1381 32.5923 7.01105 44.7585 0L49 6.82557H48.9628Z" fill="%23D8D8D8" /></svg>');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        @include media("xs") {
+          transform: translate(-35%, -40%);
+          width: rem(35);
+          height: rem(35);
+        }
+      }
+    }
+
+    &-img {
+      position: relative;
+      width: rem(320);
+      height: rem(296);
+      background: var(--primary);
+      border-radius: rem(26) rem(26) 0 0;
+
+      @include media("lg") {
+        margin-top: rem(140);
+        width: 100%;
+        align-self: center;
+      }
+      @include media("xs") {
+        margin-top: 0;
+        height: auto;
+        background: transparent;
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: -1;
+          width: 100%;
+          height: 50%;
+          background: var(--primary);
+          border-radius: rem(26) rem(26) 0 0;
+        }
+      }
+
+      img {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        min-width: rem(390);
+
+        @include media("xs") {
+          position: relative;
+          left: 0;
+          bottom: unset;
+          transform: translate(0, 0);
+          min-width: auto;
+          width: 100%;
+        }
+      }
+    }
+
+    .text-h3 {
+      font-size: rem(28);
+
+      @include media("sm") {
+        font-size: rem(24);
+
+        br {
+          display: none;
+        }
+      }
+      @include media("xs") {
+        font-size: rem(22);
+      }
+    }
+
+    .text-p {
+      strong {
+        color: var(--primary);
+        font-weight: 400;
+      }
+    }
+  }
+</style>

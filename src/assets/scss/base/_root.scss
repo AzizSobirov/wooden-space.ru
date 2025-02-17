@@ -20,29 +20,29 @@
   --font-secondary: "NunitoSans", sans-serif;
   --transition-ease: 0.3s ease;
   --transition-bezier: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  --content-width: 1240px;
-  --content-padding: 20px;
+  --content-width: #{rem(1240)};
+  --content-padding: #{rem(20)};
 }
 
 @include media("xl") {
   :root {
-    --content-width: 1024px;
+    --content-width: #{rem(1024)};
   }
 }
 @include media("lg") {
   :root {
-    --content-width: 768px;
+    --content-width: #{rem(768)};
   }
 }
 @include media("md") {
   :root {
-    --content-width: 640px;
+    --content-width: #{rem(640)};
   }
 }
 @include media("sm") {
   :root {
-    --content-width: 475px;
-    --content-padding: 16px;
+    --content-width: #{rem(475)};
+    --content-padding: #{rem(16)};
   }
 }
 

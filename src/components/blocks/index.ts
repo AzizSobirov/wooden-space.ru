@@ -11,3 +11,5 @@ export { default as Production } from "./Production.astro";
 export { default as Faq } from "./Faq.astro";
 export { default as Panel } from "./Panel.astro";
 export { default as Price } from "./Price.astro";
+export { default as OurExpertise } from "./OurExpertise.astro";
+export { default as History } from "./History.astro";

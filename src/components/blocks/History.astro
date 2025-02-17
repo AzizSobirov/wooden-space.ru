@@ -1,0 +1,152 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- History -->
+<Section name="history">
+  <Header
+    title="История компании по годам"
+    desc="Становимся лучше, и расширяемся год за годом"
+  />
+
+  <div class="history__thumbs swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">2005</div>
+      <div class="swiper-slide">2007</div>
+      <div class="swiper-slide">2009</div>
+      <div class="swiper-slide">2010</div>
+      <div class="swiper-slide">2012</div>
+      <div class="swiper-slide">2017</div>
+      <div class="swiper-slide">2020</div>
+    </div>
+  </div>
+
+  <div class="history__swiper swiper">
+    <div class="swiper-wrapper">
+      {
+        Array.from({ length: 7 }).map((_, index) => (
+          <div class="swiper-slide">
+            {index}
+            <P>
+              Основание компании и открытие производственной линии проката
+              алюминиевых реечных потолков Hunter Douglas (Нидерланды).
+              <>
+                <br />
+                <br />
+              </>
+              Начали сотрудничать с компанией Thermory (Эстония) по поставке
+              изделий из термообработанного ясеня и сосны.
+            </P>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .history {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__thumbs {
+      margin: 0 !important;
+      width: rem(230);
+      height: rem(130);
+      overflow: visible;
+      user-select: none;
+
+      @include media("sm") {
+        width: rem(150);
+        height: rem(80);
+      }
+
+      .swiper-slide {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #bdbdbd;
+        font-size: rem(54);
+        font-weight: 300;
+        font-family: var(--font-secondary);
+        transition: var(--transition-ease);
+
+        &:not(:first-child) {
+          &::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: rem(-5);
+            transform: translate(-50%, -50%);
+            height: rem(2);
+            width: rem(65);
+            background: #bdbdbd;
+          }
+        }
+
+        &.swiper-slide-active {
+          color: var(--primary);
+          font-size: rem(96);
+
+          &::before {
+            left: rem(-30);
+            width: rem(35);
+          }
+
+          & + .swiper-slide {
+            margin-left: rem(50);
+
+            &::before {
+              background: #8f8f8f;
+            }
+          }
+        }
+
+        @include media("sm") {
+          font-size: rem(40);
+          height: rem(80);
+
+          &.swiper-slide-active {
+            font-size: rem(64);
+          }
+
+          &.swiper-slide:not(:first-child)::before {
+            width: rem(40);
+            height: rem(1);
+          }
+
+          &.swiper-slide-active + .swiper-slide {
+            margin-left: rem(20);
+          }
+        }
+      }
+    }
+
+    &__swiper {
+      width: 100%;
+
+      .swiper-slide {
+        opacity: 0 !important;
+
+        &.swiper-slide-active {
+          opacity: 1 !important;
+        }
+      }
+    }
+  }
+</style>

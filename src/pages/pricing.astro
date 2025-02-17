@@ -35,4 +35,29 @@ import { prices } from "@/store";
       max-width: rem(665);
     }
   }
+
+  .panel + .price {
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(20%, 50%);
+      z-index: -2;
+      width: rem(750);
+      height: rem(750);
+      background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
+      pointer-events: none;
+
+      @include media("lg") {
+        width: rem(500);
+        height: rem(500);
+      }
+      @include media("sm") {
+        left: 65%;
+        width: rem(350);
+        height: rem(350);
+      }
+    }
+  }
 </style>

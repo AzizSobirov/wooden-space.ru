@@ -135,28 +135,6 @@ if (header) {
     });
   });
 
-  // services.addEventListener("mouseenter", () => {
-  //   servicesSubMenu.style.display = "flex"; // Ensure the submenu is visible
-  //   requestAnimationFrame(() => {
-  //     servicesSubMenu.offsetHeight;
-  //     servicesSubMenu.classList.add("show");
-  //   });
-  // });
-
-  // services.addEventListener("mouseleave", () => {
-  //   servicesSubMenu.classList.remove("show");
-
-  //   servicesSubMenu.addEventListener("transitionend", function handler(event) {
-  //     if (
-  //       event.propertyName === "opacity" &&
-  //       !servicesSubMenu.classList.contains("show")
-  //     ) {
-  //       servicesSubMenu.style.display = "none"; // Hide after fade-out
-  //       servicesSubMenu.removeEventListener("transitionend", handler);
-  //     }
-  //   });
-  // });
-
   const tabs = header.querySelectorAll("#tab");
   const tabLinks = header.querySelectorAll("#tab-link");
   const tabsBody = header.querySelector(".mobile__menu-content");
@@ -379,6 +357,30 @@ let teamSwiper = new Swiper(".team .team__list", {
     1025: {
       slidesPerView: 4,
       spaceBetween: 20,
+    },
+  },
+});
+
+let historyThumbs = new Swiper(".history .history__thumbs", {
+  slidesPerView: 1,
+  spaceBetween: 15,
+  on: {
+    slideChange: function () {
+      historySwiper.slideTo(this.activeIndex);
+    },
+  },
+});
+
+let historySwiper = new Swiper(".history .history__swiper", {
+  slidesPerView: 1,
+  effect: "fade",
+  mousewheel: true,
+  thumbs: {
+    swiper: historyThumbs,
+  },
+  on: {
+    slideChange: function () {
+      historyThumbs.update();
     },
   },
 });
