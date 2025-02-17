@@ -1,5 +1,3 @@
-import Header from "./Header/index.astro";
-import Footer from "./Footer/index.astro";
-import Modal from "./Modal/index.astro";
-
-export { Header, Footer, Modal };
+export { default as Header } from "./Header/index.astro";
+export { default as Modal } from "./Modal.astro";
+export { default as Footer } from "./Footer.astro";

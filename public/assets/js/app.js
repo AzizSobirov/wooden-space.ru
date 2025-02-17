@@ -350,6 +350,11 @@ if (fancyboxTriggers) {
   });
 }
 
+const currentYear = document.getElementById("current-year");
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear();
+}
+
 // form
 function successSend() {
   modal.open("success");
