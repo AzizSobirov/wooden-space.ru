@@ -1,0 +1,143 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+import { colors } from "@/store";
+---
+
+<!-- Painting -->
+<Section name="painting">
+  <Header
+    title="Стандартные цвета для покраски"
+    desc="При необходимости мы можем подобрать для Вас индивидуальный оттенок для реализации любых дизайнерских решений."
+  />
+  <div class="painting__colors">
+    {
+      colors.map((color) => (
+        <div class="painting__color group">
+          <Image src={`colors/${color.img}.png`} />
+          <P>{color.name}</P>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="painting__details">
+    <div class="painting__details-item">
+      <Icon src="colors.svg" />
+      <P>
+        <strong
+          >Более 310 цветов с возможностью подбора индивидуального оттенка</strong
+        > для любых дизайнерских решений, задуманных архитектором или заказчиком
+      </P>
+    </div>
+
+    <div class="painting__details-item">
+      <Icon src="oil.svg" />
+      <P>
+        В качестве покрытия древесины
+        <strong>
+          используются только экологически натуральные масла и морилка
+        </strong> от ведущих мировых производителей
+      </P>
+    </div>
+
+    <div class="painting__details-item">
+      <Icon src="lak.svg" />
+      <P>
+        <strong>
+          На финальном этапе изделия покрываются несколькими слоями лака,
+        </strong> защищают ее от загрязнения и скопления пыли, снижают проникновение
+        бытовых запахов, сохраняя в древесине её естественный аромат
+      </P>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .painting {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__colors {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(10, 1fr);
+      gap: rem(45) rem(16);
+
+      @include media("xl") {
+        grid-template-columns: repeat(8, 1fr);
+        gap: rem(25) rem(16);
+      }
+      @include media("lg") {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      @include media("md") {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      @include media("sm") {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      @include media("xs") {
+        grid-template-columns: repeat(3, 1fr);
+        gap: rem(20) rem(12);
+      }
+    }
+
+    &__color {
+      text-align: center;
+      align-items: center;
+      gap: rem(10);
+
+      img {
+        width: 100%;
+      }
+
+      .text-p {
+        font-weight: 400;
+
+        @include media("xl") {
+          font-size: rem(14);
+        }
+      }
+    }
+
+    &__details {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: rem(20);
+
+      &-item {
+        flex: 1 0 rem(280);
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: rem(20);
+        --icon-size: #{rem(45)};
+
+        @include media("xs") {
+          gap: rem(10);
+          --icon-size: #{rem(40)};
+        }
+      }
+
+      strong {
+        color: var(--primary);
+        font-weight: 400;
+      }
+    }
+  }
+</style>

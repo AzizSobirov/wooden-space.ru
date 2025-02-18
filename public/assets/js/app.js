@@ -307,49 +307,76 @@ getAccordionParents.forEach((parent) => {
   });
 });
 
-// Initialize the fancybox
-const fancyboxTriggers = Array.from(
-  document.querySelectorAll("[data-fancybox]")
-).filter((trigger) => trigger.dataset.fancybox);
-if (fancyboxTriggers) {
-  const fancyboxInstances = [];
-  fancyboxTriggers.forEach((trigger) => {
-    const name = trigger.dataset.fancybox;
-    if (fancyboxInstances.includes(name)) {
-      return; // Skip if already bound
-    }
-    // Add the name to the `fancyboxInstances` list
-    fancyboxInstances.push(name);
-  });
-  fancyboxInstances.forEach((name) => {
-    Fancybox.bind(`[data-fancybox="${name}"]`, {
-      Images: { Panzoom: { maxScale: 3 } },
-    });
-  });
-}
-
+// Footer
 const currentYear = document.getElementById("current-year");
 if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
 }
 
-// form
-function successSend() {
-  modal.open("success");
+// projects
+const projects = document.querySelector(".projects.is-main");
+if (projects) {
+  const filterItems = projects.querySelectorAll(".projects__filter-item");
+  const listContainer = projects.querySelector(".projects__list");
+  const listItems = Array.from(listContainer.querySelectorAll(".card"));
+  const btnMore = projects.querySelector(".btn-more");
 
-  setTimeout(() => {
-    modal.close();
-  }, 3000);
+  // Store the original projects data
+  let allProjects = listItems.map((item) => ({
+    element: item,
+    category: item.dataset.category,
+  }));
+
+  let filteredProjects = [...allProjects]; // Default to all projects
+
+  // Function to render projects dynamically
+  function renderProjects(items) {
+    listContainer.innerHTML = ""; // Clear existing items
+    let count = 0;
+
+    items.forEach(({ element }) => {
+      count++;
+      if (count > 12) {
+        element.style.display = "none";
+        btnMore.style.display = "flex";
+      } else {
+        element.style.display = "flex";
+        btnMore.style.display = "none";
+      }
+
+      listContainer.appendChild(element);
+    });
+  }
+
+  // Initial render
+  renderProjects(filteredProjects);
+
+  // Filter click event
+  filterItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      filterItems.forEach((i) => i.classList.remove("active"));
+      item.classList.add("active");
+
+      const category = item.dataset.category;
+
+      filteredProjects =
+        category === "Все"
+          ? [...allProjects]
+          : allProjects.filter((p) => p.category === category);
+
+      renderProjects(filteredProjects);
+    });
+  });
+
+  // "More" button click event
+  btnMore.addEventListener("click", () => {
+    let items = listContainer.querySelectorAll(".card");
+    items.forEach((item) => (item.style.display = "flex"));
+    btnMore.style.display = "none"; // Hide after showing all
+  });
 }
 
-const forms = document.querySelectorAll(".the-form");
-forms.forEach((form) => {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    successSend();
-  });
-});
-
+// swipers
 let teamSwiper = new Swiper(".team .team__list", {
   slidesPerView: "auto",
   spaceBetween: 15,
@@ -383,4 +410,42 @@ let historySwiper = new Swiper(".history .history__swiper", {
       historyThumbs.update();
     },
   },
+});
+
+// Initialize the fancybox
+const fancyboxTriggers = Array.from(
+  document.querySelectorAll("[data-fancybox]")
+).filter((trigger) => trigger.dataset.fancybox);
+if (fancyboxTriggers) {
+  const fancyboxInstances = [];
+  fancyboxTriggers.forEach((trigger) => {
+    const name = trigger.dataset.fancybox;
+    if (fancyboxInstances.includes(name)) {
+      return; // Skip if already bound
+    }
+    // Add the name to the `fancyboxInstances` list
+    fancyboxInstances.push(name);
+  });
+  fancyboxInstances.forEach((name) => {
+    Fancybox.bind(`[data-fancybox="${name}"]`, {
+      Images: { Panzoom: { maxScale: 3 } },
+    });
+  });
+}
+
+// form
+function successSend() {
+  modal.open("success");
+
+  setTimeout(() => {
+    modal.close();
+  }, 3000);
+}
+
+const forms = document.querySelectorAll(".the-form");
+forms.forEach((form) => {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    successSend();
+  });
 });

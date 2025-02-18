@@ -1,0 +1,24 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { H3, P, Image } from "ui";
+---
+
+<App title="Дизайнерам/архитекторам">
+  <main>
+    <Blocks.Panel title="Дизайнерам/архитекторам" >
+      <div class="panel__career">
+        
+      </div>
+    
+    </Blocks.Panel>
+    <Blocks.Rate />
+    <Blocks.Clients />
+    <Blocks.Application />
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+</style>
+ 

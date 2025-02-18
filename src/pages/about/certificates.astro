@@ -1,0 +1,163 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { H3, P, Icon, Image } from "ui";
+---
+
+<App title="Сертификаты">
+  <main>
+    <Blocks.Panel title="Сертификаты">
+      <div class="panel__certificates">
+        <P>
+          Вся наша продукция проходит добровольную сертификацию, что
+          подтверждает её соответствие высоким стандартам качества и
+          безопасности. Мы стремимся обеспечить наших заказчиков полной
+          уверенностью в том, что они получают продукцию, изготовленную из
+          натуральных, экологически чистых материалов, соответствующих строгим
+          требованиям современного производства. Этот шаг демонстрирует нашу
+          ответственность перед клиентами и готовность предоставить гарантии на
+          каждый этап изготовления, чтобы вы могли доверять не только нашему
+          опыту, но и проверенному качеству готовых изделий.
+        </P>
+
+        <div class="panel__certificates-list">
+          {
+            Array.from({ length: 3 }).map((_, i) => (
+              <div
+                class="panel__certificates-item"
+                data-fancybox="certificates"
+                data-src={`/assets/img/certificates/${i + 1}.png`}
+              >
+                <Image src={`certificates/${i + 1}.png`} />
+                <Icon src="zoom.svg" />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </Blocks.Panel>
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .panel__certificates {
+    position: relative;
+    width: 100%;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(20%, -40%);
+      width: rem(635);
+      height: rem(360);
+      background: url("/assets/img/hand-wood.png") center/contain no-repeat;
+      pointer-events: none;
+
+      @include media("lg") {
+        transform: translate(40%, -50%);
+        width: rem(500);
+        height: rem(300);
+      }
+      @include media("md") {
+        display: none;
+      }
+    }
+
+    & > .text-p {
+      width: 100%;
+      max-width: rem(720);
+
+      @include media("xl") {
+        max-width: rem(580);
+      }
+      @include media("lg") {
+        margin-top: rem(20);
+      }
+      @include media("sm") {
+        margin-top: 0;
+      }
+    }
+
+    &-list {
+      margin-top: rem(100);
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: rem(40);
+
+      @include media("xl") {
+        margin-top: rem(60);
+        gap: rem(20);
+      }
+      @include media("sm") {
+        margin-top: rem(30);
+        flex-wrap: wrap;
+      }
+      @include media("xs") {
+        gap: rem(15);
+      }
+    }
+
+    &-item {
+      position: relative;
+      width: rem(300);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-in;
+
+      @include media("xl") {
+        width: rem(240);
+      }
+      @include media("sm") {
+        width: calc(50% - rem(10));
+      }
+      @include media("xs") {
+        width: calc(50% - rem(7.5));
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(194, 155, 93, 0.64);
+        transition: var(--transition-ease);
+        opacity: 0;
+      }
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .icon {
+        position: absolute;
+        transition: var(--transition-ease);
+        opacity: 0;
+        --icon-size: #{rem(60)};
+
+        @include media("sm") {
+          --icon-size: #{rem(48)};
+        }
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+        }
+        .icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>

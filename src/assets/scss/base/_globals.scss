@@ -1,5 +1,4 @@
-@use "./functions" as *;
-@use "./mixins" as *;
+@use "../helpers" as *;
 
 .bg-img {
   position: absolute;

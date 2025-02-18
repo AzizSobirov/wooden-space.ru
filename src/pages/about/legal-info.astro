@@ -1,0 +1,170 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { H3, P, Image } from "ui";
+---
+
+<App title="Юридическая информация">
+  <main>
+    <Blocks.Panel title="Юридическая информация">
+      <div class="panel__info">
+        <div class="bg-img">
+          <Image src="legal-info-bg.png" />
+        </div>
+
+        <ul class="panel__info-list">
+          <li>
+            <strong>Полное наименование:</strong>
+            <p>Индивидуальный предприниматель Мельник Анна Викторовна</p>
+          </li>
+          <li><strong>ОГРНИП:</strong> <p>319774600228028</p></li>
+          <li>
+            <strong>Главный бухгалтер:</strong>
+            <p>Мельник Анна Викторовна</p>
+          </li>
+          <li><strong>Расчетный счет:</strong> <p>4080281080032000831</p></li>
+          <li>
+            <strong>Юридический адрес:</strong>
+            <p>117393, г. Москва, ул. Гарибальди, д.10, корп.2, кв. 51</p>
+          </li>
+          <li>
+            <strong>Полное наименование банка:</strong>
+            <p>Филиал "Центральный" Банка ВТБ (ПАО) г. Москва</p>
+          </li>
+          <li>
+            <strong>Почтовый адрес:</strong>
+            <p>117393, г. Москва, ул. Гарибальди, д.10, корп.2, кв. 51</p>
+          </li>
+          <li>
+            <strong>Корреспондентский счет банка:</strong>
+            <p>30101810145250000141</p>
+          </li>
+          <li><strong>ИНН:</strong> <p>972701167434</p></li>
+          <li><strong>БИК:</strong> <p>044525411</p></li>
+        </ul>
+
+        <a href="#" class="btn btn-download" download>
+          Скачать карточку организации
+
+          <span class="icon">
+            <svg
+              width="42"
+              height="42"
+              viewBox="0 0 42 42"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.6663 39.8438H30.3338C33.9728 39.8438 35.7833 37.998 35.7833 34.3418V18.381C35.7833 16.113 35.5373 15.129 34.131 13.6875L24.4275 3.8265C23.0925 2.45475 22.002 2.15625 20.016 2.15625H11.6663C8.0453 2.15625 6.2168 4.01925 6.2168 7.67625V34.3418C6.2168 38.0153 8.0453 39.8438 11.6663 39.8438ZM11.8065 37.014C9.99605 37.014 9.04655 36.0465 9.04655 34.2893V7.72875C9.04655 5.98875 9.99605 4.986 11.8245 4.986H19.629V15.1995C19.629 17.4143 20.754 18.504 22.9335 18.504H32.9535V34.2893C32.9535 36.0465 32.0213 37.014 30.1935 37.014H11.8065ZM23.25 15.849C22.5645 15.849 22.2825 15.5685 22.2825 14.865V5.53125L32.4075 15.8497L23.25 15.849Z"
+                fill="#C29B5D"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </Blocks.Panel>
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .panel__info {
+    position: relative;
+    padding: rem(50) rem(40) rem(125) rem(50);
+    width: 100%;
+    border-radius: rem(26);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: rem(30);
+
+    @include media("xl") {
+      flex-direction: column;
+    }
+    @include media("lg") {
+      padding: rem(30);
+    }
+    @include media("sm") {
+      padding: rem(15);
+      border-radius: rem(32);
+      gap: rem(15);
+    }
+
+    &-list {
+      padding: rem(40);
+      width: 100%;
+      backdrop-filter: blur(rem(24));
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: rem(30);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: rem(20);
+
+      @include media("sm") {
+        padding: rem(20);
+        border-radius: rem(24);
+      }
+      @include media("xs") {
+        padding: rem(15);
+        grid-template-columns: 1fr;
+        gap: rem(12);
+      }
+
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(12);
+
+        @include media("xs") {
+          font-size: rem(14);
+          gap: rem(5);
+
+          &:nth-child(2) {
+            order: 1;
+          }
+        }
+      }
+
+      strong {
+        font-size: rem(18);
+
+        @include media("xs") {
+          font-size: rem(16);
+        }
+      }
+    }
+
+    .btn-download {
+      padding: rem(28) rem(18);
+      backdrop-filter: blur(rem(24));
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: rem(30);
+      gap: rem(24);
+      color: var(--primary);
+      font-size: rem(18);
+      font-weight: 700;
+      --icon-size: #{rem(42)};
+
+      @include media("lg") {
+        padding: rem(20);
+        font-size: rem(16);
+        gap: rem(20);
+        --icon-size: #{rem(32)};
+      }
+      @include media("sm") {
+        width: 100%;
+        border-radius: rem(24);
+      }
+      @include media("xs") {
+        font-size: rem(14);
+        gap: rem(10);
+        --icon-size: #{rem(24)};
+      }
+      @include media("375px") {
+        font-size: rem(12);
+      }
+    }
+  }
+</style>
