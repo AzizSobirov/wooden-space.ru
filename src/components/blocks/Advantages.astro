@@ -1,0 +1,94 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+import { advantages } from "@/store";
+---
+
+<!-- Advantages -->
+<Section name="advantages">
+  <Header
+    title="Вот почему стоит выбрать Wooden Space"
+    desc="Рассказываем об основных преимуществах сотрудничества"
+  />
+
+  <div class="advantages__list">
+    {
+      advantages.map((advantage) => (
+        <div class="advantages__list-item">
+          <Icon src="check.svg" />
+          <P>{advantage}</P>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .advantages {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      position: relative;
+      padding-left: rem(210);
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: rem(30) rem(20);
+
+      @include media("lg") {
+        padding-left: 0;
+        gap: rem(20);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translate(-70%, -50%);
+        z-index: -1;
+        pointer-events: none;
+        width: rem(765);
+        height: rem(765);
+        background: url("/assets/img/woods.png") center/contain no-repeat;
+
+        @include media("lg") {
+          display: none;
+        }
+      }
+
+      &-item {
+        flex: 1 0 rem(380);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(15);
+        --icon-size: #{rem(86)};
+
+        @include media("xl") {
+          flex-basis: rem(320);
+        }
+        @include media("sm") {
+          --icon-size: #{rem(64)};
+        }
+        @include media("xs") {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+</style>

@@ -1,11 +1,17 @@
 ---
 import { Section, Header, P, Image, Icon, Button } from "ui";
 import TheForm from "../TheForm.astro";
+
+interface Props {
+  variant?: "primary" | "secondary";
+}
+
+const { variant = "primary" } = Astro.props;
 ---
 
 <!-- Application -->
 <Section name="application">
-  <TheForm />
+  <TheForm variant={variant} />
 </Section>
 
 <style lang="scss" is:global>

@@ -14,3 +14,4 @@ export { default as Price } from "./Price.astro";
 export { default as OurExpertise } from "./OurExpertise.astro";
 export { default as History } from "./History.astro";
 export { default as Painting } from "./Painting.astro";
+export { default as Advantages } from "./Advantages.astro";

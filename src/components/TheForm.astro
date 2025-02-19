@@ -7,56 +7,118 @@ interface Props {
   variant?: "primary" | "secondary";
 }
 
-const { success = false } = Astro.props;
+const { success = false, variant = "primary" } = Astro.props;
 ---
 
-<div class="form">
-  {
-    success ? (
-      <>
-        <div class="form-content">
-          <H2>Спасибо за Вашу заявку!</H2>
-          <div class="text-p">
-            Наш менеджер скоро свяжется с Вами и проконсультирует , а также
-            ответит на все интересующие вопросы.
+{
+  variant === "primary" ? (
+    <div class="form">
+      {success ? (
+        <>
+          <div class="form-content">
+            <H2>Спасибо за Вашу заявку!</H2>
+            <div class="text-p">
+              Наш менеджер скоро свяжется с Вами и проконсультирует , а также
+              ответит на все интересующие вопросы.
+            </div>
           </div>
-        </div>
-      </>
-    ) : (
-      <>
-        <div class="form-content">
-          <H2>Есть вопросы по продукции?</H2>
-          <P>
-            Заполните форму ниже и наш менеджер проконсультирует Вас и ответит
-            на все интересующие вопросы.
-          </P>
+        </>
+      ) : (
+        <>
+          <div class="form-content">
+            <H2>Есть вопросы по продукции?</H2>
+            <P>
+              Заполните форму ниже и наш менеджер проконсультирует Вас и ответит
+              на все интересующие вопросы.
+            </P>
 
-          <form class="the-form">
-            <input type="text" name="name" placeholder="Ваше имя" required />
-            <input
-              type="text"
-              name="phone"
-              placeholder="Ваш номер телефона"
-              required
-            />
-            <button class="btn" type="submit">
-              отправить заявку
-            </button>
-          </form>
+            <form class="the-form">
+              <input type="text" name="name" placeholder="Ваше имя" required />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Ваш номер телефона"
+                required
+              />
+              <button class="btn" type="submit">
+                отправить заявку
+              </button>
+            </form>
 
-          <div class="text-xs">
-            Отправляя заявку я даю
-            <a href="#">согласие на обработку персональных данных</a>
+            <div class="text-xs">
+              Отправляя заявку я даю
+              <a href="#">согласие на обработку персональных данных</a>
+            </div>
           </div>
-        </div>
-      </>
-    )
-  }
+        </>
+      )}
 
-  <div class="form-img">
-    <Image src="form-img-1.png" />
-  </div>
-</div>
+      <div class="form-img">
+        <Image src="form-img-1.png" />
+      </div>
+    </div>
+  ) : (
+    <div class="form">
+      {success ? (
+        <>
+          <div class="form-content">
+            <H2>Спасибо за Вашу заявку!</H2>
+            <div class="text-p">
+              Наш менеджер скоро свяжется с Вами и проконсультирует , а также
+              ответит на все интересующие вопросы.
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div class="form-content variant-secondary">
+            <H2>Начнем сотрудничать!</H2>
+            <P>
+              Заполните форму ниже и наш менеджер проконсультирует Вас и ответит
+              на все интересующие вопросы, а так же поможет получить образы
+              нашей продуции
+            </P>
+
+            <form class="the-form">
+              <div class="form-group">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Ваше имя"
+                  required
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Ваш номер телефона"
+                  required
+                />
+              </div>
+
+              <textarea
+                name="comment"
+                placeholder="Комментарии (тут вы можете указать сайт или ссылку на портфолио)"
+              />
+
+              <button class="btn" type="submit">
+                отправить заявку
+              </button>
+            </form>
+
+            <div class="text-xs">
+              Отправляя заявку я даю
+              <a href="#">согласие на обработку персональных данных</a>
+            </div>
+          </div>
+        </>
+      )}
+
+      <div class="form-img variant-secondary">
+        <Image src="form-img-2.png" />
+      </div>
+    </div>
+  )
+}
 
 <style lang="scss" is:global>
   @use "scss/helpers" as *;
@@ -134,7 +196,8 @@ const { success = false } = Astro.props;
         }
       }
 
-      input {
+      input,
+      textarea {
         padding: 0 rem(20);
         width: 100%;
         height: rem(48);
@@ -184,6 +247,44 @@ const { success = false } = Astro.props;
           text-decoration: underline dotted;
         }
       }
+
+      &.variant-secondary {
+        @include media("1025px", min-width) {
+          .text-p {
+            max-width: rem(610);
+          }
+        }
+
+        form {
+          max-width: rem(525);
+        }
+
+        .form-group {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: rem(18);
+
+          @include media("sm") {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        textarea {
+          padding-top: rem(12);
+          padding-bottom: rem(12);
+          height: rem(75);
+          border-radius: rem(28);
+
+          @include media("lg") {
+            height: rem(100);
+          }
+
+          &:focus::placeholder {
+            opacity: 0;
+          }
+        }
+      }
     }
 
     &-img {
@@ -193,6 +294,7 @@ const { success = false } = Astro.props;
       height: 100%;
       pointer-events: none;
       border-top-right-radius: rem(25);
+      border-bottom-right-radius: rem(25);
       overflow: hidden;
 
       @include media("sm") {
@@ -239,6 +341,15 @@ const { success = false } = Astro.props;
         }
         @include media("sm") {
           display: none;
+        }
+      }
+
+      &.variant-secondary {
+        display: flex;
+        align-items: flex-end;
+
+        img {
+          object-position: bottom left;
         }
       }
     }
