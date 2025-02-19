@@ -1,0 +1,131 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Termodereva -->
+<Section name="termodereva">
+  <Header
+    title="Преимущества термодерева от Wooden Space"
+    desc="Рассказываем и объясняем чем наша продукция выгодно отличается от конкурентов"
+  />
+  <div class="termodereva__advantages">
+    <div class="termodereva__advantages-item">
+      <div class="group">
+        <strong>СРАЩИВАЕМ ДРЕВЕСИНУ</strong>
+        <p>
+          Сращиванием доски в длину до 5 м. Вы не переплачиваете за отторцовку и
+          подбор по длине. Фиксированные длины проще в монтаже
+        </p>
+      </div>
+      <div class="group">
+        <strong>ПРОФЕССИОНАЛЬНАЯ ПОКРАСКА </strong>
+        <p>
+          Красим доску в профессиональном покрасочном цеху натуральными маслами.
+          Подберем нужный Вам оттенок по образцу
+        </p>
+      </div>
+    </div>
+    <div class="termodereva__advantages-img">
+      <Image src="termodereva.png" />
+    </div>
+    <div class="termodereva__advantages-item">
+      <div class="group">
+        <strong>ПРОТИВОПОЖАРНОЕ ПОКРЫТИЕ </strong>
+        <p>
+          Покрываем древесину для внутреннего и наружного применения
+          противопожарными маслами с классом пожарной опасности КМ1
+        </p>
+      </div>
+      <div class="group">
+        <strong>СКРЫТАЯ СИСТЕМА КРЕПЛЕНИЯ </strong>
+        <p>
+          Наша система SPACECLICK существенно упростит и ускорит монтаж.
+          Позволяет произвести штучную замену доски без демонтажа остальных
+          досок
+        </p>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .termodereva {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__advantages {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: rem(20);
+
+      @include media("sm") {
+        flex-direction: column;
+      }
+
+      &-item {
+        width: 100%;
+        max-width: rem(400);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(45);
+
+        @include media("xl") {
+          max-width: 100%;
+        }
+        @include media("sm") {
+          gap: rem(20);
+        }
+      }
+
+      .group {
+        width: 100%;
+        gap: rem(5);
+      }
+
+      strong {
+        color: var(--primary);
+        font-size: rem(18);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-weight: 300;
+      }
+
+      &-img {
+        margin-top: auto;
+
+        @include media("xl") {
+          display: none;
+        }
+        @include media("sm") {
+          margin: rem(10) 0;
+          width: 100%;
+          display: block;
+
+          img {
+            margin: 0 auto;
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+</style>

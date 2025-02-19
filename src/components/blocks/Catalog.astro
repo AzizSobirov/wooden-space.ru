@@ -1,0 +1,161 @@
+---
+import { Section, Header, H4, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  length?: number;
+}
+
+const { length = 6 } = Astro.props;
+---
+
+<!-- Catalog -->
+<Section name="catalog">
+  <Header title="Наша продукция" />
+
+  <div class="catalog__products">
+    {
+      Array.from({ length }).map(() => (
+        <div class="catalog__product">
+          <div class="catalog__product-img">
+            <Image src="product/1.png" />
+          </div>
+          <div class="catalog__product-content">
+            <H4>Фасадная доска из термоясеня. Сорт 0-1. 20мм</H4>
+            <P>
+              Ширина 75 - 180 мм <br />
+              Длина 800 - 3000 мм
+            </P>
+            <div class="catalog__product-price">
+              <span class="price">4 750 р/1 м²</span>
+              <span class="old-price">5463 р/1 м²</span>
+            </div>
+            <Button href="/product">Подробнее</Button>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .catalog {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__products {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(20);
+
+      @include media("lg") {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @include media("sm") {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__product {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      &-img {
+        position: relative;
+        width: 100%;
+        height: rem(380);
+        background: #efefef;
+        border-radius: rem(25);
+
+        @include media("xl") {
+          height: rem(320);
+        }
+        @include media("lg") {
+          height: rem(360);
+        }
+        @include media("md") {
+          height: rem(300);
+        }
+        @include media("sm") {
+          min-height: rem(280);
+          height: auto;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: rem(20);
+          left: rem(20);
+          width: calc(100% - rem(40));
+          height: calc(100% - rem(40));
+          border-radius: inherit;
+          border: rem(1) solid var(--primary);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: inherit;
+        }
+      }
+
+      &-content {
+        padding: rem(16);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(10);
+
+        .text-h4 {
+          color: var(--primary);
+        }
+
+        .btn {
+          width: rem(175);
+          height: rem(45);
+          text-transform: capitalize;
+          border-radius: rem(16);
+          box-shadow: none;
+        }
+      }
+
+      &-price {
+        margin: rem(14) 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(20);
+
+        .price {
+          font-weight: 600;
+          font-size: 20px;
+          color: var(--primary);
+        }
+
+        .old-price {
+          font-weight: 600;
+          font-size: 16px;
+          text-decoration: line-through;
+          color: #8f8f8f;
+        }
+      }
+    }
+  }
+</style>

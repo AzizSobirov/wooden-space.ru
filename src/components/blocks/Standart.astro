@@ -1,0 +1,96 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Standart -->
+<Section name="standart">
+  <Header
+    title="Стандартные размеры реек"
+    desc="По индивидуальному запросу изготавливаем и нестандартные размеры реек"
+  />
+
+  <ul class="standart__details">
+    <li><strong>Ширина:</strong> 30/40/50/60/70/80 мм</li>
+    <li><strong>Глубина:</strong> любая от 30 до 200 мм с шагом 10 мм</li>
+    <li><strong>Длина:</strong> любая от 1000 до 9000 мм</li>
+    <li><strong>Расстояние:</strong> между рейками от 20 до 200 мм</li>
+  </ul>
+
+  <div class="standart__img">
+    <Image src="standart-img.png" />
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .standart {
+    position: relative;
+
+    .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(20%, -20%);
+        width: rem(620);
+        height: rem(480);
+        background: url("/assets/img/standart-img2.png") center/contain
+          no-repeat;
+        pointer-events: none;
+
+        @include media("xl") {
+          width: rem(420);
+          height: rem(380);
+        }
+        @include media("lg") {
+          display: none;
+        }
+      }
+    }
+
+    &__details {
+      width: 100%;
+      max-width: rem(680);
+      display: grid;
+      grid-template-columns: rem(260) rem(360);
+      gap: rem(30) rem(40);
+
+      @include media("md") {
+        grid-template-columns: 1fr;
+      }
+
+      li {
+        font-weight: 300;
+      }
+
+      strong {
+        color: var(--primary);
+        font-weight: 400;
+      }
+    }
+
+    &__img {
+      width: 100%;
+      overflow: auto;
+
+      img {
+        min-width: rem(922);
+        width: 100%;
+        object-fit: contain;
+        object-position: left;
+      }
+    }
+  }
+</style>

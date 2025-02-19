@@ -4,19 +4,10 @@ import * as Blocks from "blocks";
 import { colors, pricing, prices } from "@/store";
 ---
 
-<App title="Термодерево">
+<App title="Кубообразный потолок">
   <main>
-    <Blocks.Hero title="Термодерево" image="hero/7.png" />
-    <Blocks.Services
-      title="Термодерево по назначению"
-      list={[
-        { img: "services/4.png", title: "Фасад" },
-        { img: "services/5.png", title: "Терасса" },
-        { img: "services/6.png", title: "Бруски/Рейки " },
-      ]}
-    />
-    <Blocks.Termodereva />
-    <Blocks.Catalog />
+    <Blocks.Hero title="Кубообразный потолок" image="hero/8.png" />
+    <Blocks.Slats image="slats/5.png" variant="secondary2" />
     <Blocks.Colors
       species={[
         { img: "species/1.png", name: "Термососна" },
@@ -24,11 +15,12 @@ import { colors, pricing, prices } from "@/store";
         { img: "species/3.png", name: "Термоясень" },
       ]}
       colors={colors}
+      type="secondary"
     />
+    <Blocks.Standart />
     <Blocks.Delivery />
     <Blocks.Clients />
     <Blocks.Projects />
     <Blocks.Application type="calculate" />
-    <Blocks.Production />
   </main>
 </App>

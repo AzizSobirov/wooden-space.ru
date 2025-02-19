@@ -3,7 +3,7 @@ import { Section, Header, P, Image, Icon, Button } from "ui";
 
 interface Props {
   image: string;
-  variant?: "default" | "secondary";
+  variant?: "default" | "secondary" | "secondary2";
 }
 
 const { image, variant } = Astro.props;
@@ -54,16 +54,39 @@ const { image, variant } = Astro.props;
       </div>
 
       {
-        variant == "secondary" && (
-          <div class="slats__list-item">
-            <Icon src="4.png" />
-            <P>
-              <strong>Изделия изготавливаются точно в нужный Вам размер</strong>
-              с гладкой поверхностью либо с эффектом состаривания (брашировка)
-            </P>
-          </div>
-        )
+        variant == "secondary" ||
+          (variant == "secondary2" && (
+            <div class="slats__list-item">
+              <Icon src="4.png" />
+              <P>
+                <strong>
+                  Изделия изготавливаются точно в нужный Вам размер
+                </strong>
+                с гладкой поверхностью либо с эффектом состаривания (брашировка)
+              </P>
+            </div>
+          ))
       }
+    </div>
+  </div>
+
+  <div class="slats__includes">
+    <div class="slats__includes-item">
+      <Icon src="check-white.svg" />
+      <P>Материал – алюминий и <br /> оцинкованная сталь</P>
+    </div>
+    <div class="slats__includes-item">
+      <Icon src="check-white.svg" />
+      <P>Срок службы <br /> более 25 лет</P>
+    </div>
+    <div class="slats__includes-item">
+      <Icon src="check-white.svg" />
+      <P>Материал пожаробезопасен <br /> и долговечен</P>
+    </div>
+    <div class="slats__includes-item">
+      <Icon src="check-white.svg" />
+      <P>Можно использовать как во <br /> внутренней отделке так и в наружной</P
+      >
     </div>
   </div>
 </Section>
@@ -204,6 +227,70 @@ const { image, variant } = Astro.props;
         height: 100%;
         width: auto;
         object-fit: contain;
+      }
+    }
+
+    &__includes {
+      position: relative;
+      padding: rem(48) rem(42);
+      width: 100%;
+      color: #fff;
+      background: var(--primary);
+      border-radius: rem(26);
+      overflow: hidden;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      gap: rem(30) rem(20);
+
+      @include media("xl") {
+        flex-wrap: wrap;
+      }
+      @include media("sm") {
+        padding: rem(20);
+        gap: rem(20);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-105%, 0);
+        width: rem(750);
+        height: rem(750);
+        background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
+        pointer-events: none;
+        opacity: 0.05;
+
+        @include media("lg") {
+          width: rem(500);
+          height: rem(500);
+        }
+        @include media("sm") {
+          left: 0%;
+          transform: translate(0%, 0);
+          width: rem(350);
+          height: rem(350);
+        }
+      }
+
+      &-item {
+        position: relative;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(16);
+        --icon-size: #{rem(45)};
+
+        @include media("xl") {
+          flex: 1 0 rem(320);
+
+          br {
+            display: none;
+          }
+        }
       }
     }
   }

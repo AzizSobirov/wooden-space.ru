@@ -23,3 +23,7 @@ export { default as Prices } from "./Prices.astro";
 export { default as Delivery } from "./Delivery.astro";
 export { default as Video } from "./Video.astro";
 export { default as Installation } from "./Installation.astro";
+export { default as Termodereva } from "./Termodereva.astro";
+export { default as Catalog } from "./Catalog.astro";
+export { default as Standart } from "./Standart.astro";
+export { default as Lamps } from "./Lamps.astro";
