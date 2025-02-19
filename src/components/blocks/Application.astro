@@ -4,14 +4,15 @@ import TheForm from "../TheForm.astro";
 
 interface Props {
   variant?: "primary" | "secondary";
+  type?: "calculate" | "default";
 }
 
-const { variant = "primary" } = Astro.props;
+const { variant = "primary", type = "default" } = Astro.props;
 ---
 
 <!-- Application -->
 <Section name="application">
-  <TheForm variant={variant} />
+  <TheForm variant={variant} type={type} />
 </Section>
 
 <style lang="scss" is:global>

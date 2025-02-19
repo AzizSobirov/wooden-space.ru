@@ -1,0 +1,210 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  image: string;
+  variant?: "default" | "secondary";
+}
+
+const { image, variant } = Astro.props;
+---
+
+<!-- Slats -->
+<Section name="slats">
+  <Header
+    title="Что такое рейки от Wooden Space"
+    desc="Рассказываем и объясняем чем наша продукция выгодно отличается от конкурентов"
+  />
+
+  <div class="slats__content">
+    <div class="slats__img" class:list={{ secondary: variant === "secondary" }}>
+      <Image src={image} />
+    </div>
+
+    <div class="slats__list">
+      <div class="slats__list-item">
+        <Icon src="1.png" />
+        <P>
+          <strong>Массив древесины высшего сорта «Экстра»</strong> с идеально
+          ровной поверхностью без сучков и дефектов.Подберем цвет в нужный Вам
+          оттенок
+        </P>
+      </div>
+      <div class="slats__list-item">
+        <Icon src="2.png" />
+        <P>
+          <strong>
+            Термообработанные и качественно высушенные виды древесины,</strong
+          > которые, помимо минимальной влажности в 4-6%, отличаются большей стабильностью,
+          прочностью, долговечностью, влагоустойчивостью . Наше дерево остается стабильным
+          и его не поведет. Мы готовы развеять миф о возможной деформации реек из
+          массива древесины, предоставив гарантию 3 года на их размерную стабильность
+          при нашем монтаже и правильной эксплуатации.
+        </P>
+      </div>
+      <div class="slats__list-item">
+        <Icon src="3.png" />
+        <P>
+          <strong> У нас гибкий размерный ряд</strong> и мы изготовим рейки точно
+          в нужную Вам длину в диапазоне от 900 мм до 3000 мм. Вам не нужно платить
+          за длину 2,8 м (стандартная длина рейки из МДФ), если Вам нужна рейка длиной
+          1,8 м. Вы платите только за полезный размер. Рейки в длине больше 3 м изготавливаются
+          со сращиванием с точностью до см
+        </P>
+      </div>
+
+      {
+        variant == "secondary" && (
+          <div class="slats__list-item">
+            <Icon src="4.png" />
+            <P>
+              <strong>Изделия изготавливаются точно в нужный Вам размер</strong>
+              с гладкой поверхностью либо с эффектом состаривания (брашировка)
+            </P>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .slats {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__content {
+      position: relative;
+      width: 100%;
+
+      @include media("lg") {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(40);
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      max-width: rem(560);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("lg") {
+        max-width: 100%;
+      }
+      @include media("sm") {
+        gap: rem(25);
+      }
+
+      &-item {
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: rem(20);
+
+        @include media("xs") {
+          gap: rem(10);
+        }
+      }
+
+      .icon {
+        position: relative;
+        height: rem(54);
+        min-width: rem(90);
+        width: rem(90);
+        justify-content: flex-end;
+
+        @include media("sm") {
+          height: rem(44);
+          min-width: rem(80);
+          width: rem(80);
+        }
+        @include media("xs") {
+          height: rem(34);
+          min-width: rem(60);
+          width: rem(60);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: rem(10);
+          z-index: -1;
+          height: 100%;
+          width: 50vw;
+          background: rgba(200, 200, 200, 0.31);
+          border-radius: rem(10);
+        }
+
+        img {
+          object-position: right;
+        }
+      }
+
+      .text-p {
+        strong {
+          color: var(--primary);
+          font-weight: 400;
+        }
+      }
+    }
+
+    &__img {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(30%, -50%);
+      height: rem(510);
+
+      @include media("1025px", min-width) {
+        &.secondary {
+          transform: translate(48%, -50%);
+        }
+      }
+      @include media("1280px", min-width) {
+        &.secondary {
+          transform: translate(40%, -50%);
+        }
+      }
+      @include media("xl") {
+        height: rem(420);
+        transform: translate(45%, -50%);
+      }
+
+      @include media("lg") {
+        position: relative;
+        top: 0;
+        transform: translate(0, 0);
+        height: auto;
+        width: 100%;
+      }
+
+      img {
+        height: 100%;
+        width: auto;
+        object-fit: contain;
+      }
+    }
+  }
+</style>

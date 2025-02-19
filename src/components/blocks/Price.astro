@@ -3,6 +3,7 @@ import { Section, Header, P, Image, Icon, Button } from "ui";
 
 interface Props {
   title: string;
+  desc?: string;
   prices: {
     name: string;
     unit: string;
@@ -10,12 +11,12 @@ interface Props {
   }[];
 }
 
-const { title, prices } = Astro.props;
+const { title, desc, prices } = Astro.props;
 ---
 
 <!-- Price -->
 <Section name="price">
-  <Header title={title} />
+  <Header title={title} desc={desc} />
 
   <div class="price__table">
     <div class="price__table-header">

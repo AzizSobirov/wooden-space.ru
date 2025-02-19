@@ -1,0 +1,110 @@
+---
+import { Section, Header, H3, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Delivery -->
+<Section name="delivery">
+  <Header
+    title="Доставка и монтаж"
+    desc="Осуществляем доставку  и монтаж своей продукции."
+  />
+
+  <div class="delivery__wrapper">
+    <div class="delivery__wrapper-item">
+      <Icon src="delivery.png" />
+      <div class="group">
+        <H3>Доставка</H3>
+        <P>
+          Наша компания осуществляет доставку по Москве и МО собственным
+          транспортом, а в регионы при помощи транспортных компаний. Цены
+          рассчитываются индивидуально.
+        </P>
+      </div>
+    </div>
+    <div class="delivery__wrapper-item">
+      <Icon src="installation.png" />
+      <div class="group">
+        <H3>Монтаж</H3>
+        <P>
+          Установкой в нашей компании занимаются профессионально подготовленные
+          бригады. В регионах у нас действует услуга Шеф-монтаж, также вы
+          сможете собрать все конструкции при помощи подробной инструкции.
+        </P>
+      </div>
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .delivery {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__wrapper {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: rem(40);
+
+      @include media("xl") {
+        gap: rem(30);
+      }
+
+      &-item {
+        flex: 1 0 rem(380);
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: rem(40);
+
+        @include media("xl") {
+          gap: rem(20);
+        }
+        @include media("sm") {
+          flex-basis: 100%;
+        }
+        @include media("xs") {
+          text-align: center;
+          flex-direction: column;
+          align-items: center;
+          gap: rem(15);
+
+          .text-h3 {
+            font-size: rem(24);
+          }
+        }
+      }
+
+      .icon {
+        --icon-size: #{rem(160)};
+
+        @include media("xl") {
+          --icon-size: #{rem(120)};
+        }
+      }
+
+      .group {
+        gap: rem(16);
+
+        @include media("xs") {
+          align-items: center;
+          gap: rem(12);
+        }
+      }
+    }
+  }
+</style>

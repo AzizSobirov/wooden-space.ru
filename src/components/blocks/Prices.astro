@@ -1,0 +1,189 @@
+---
+import { Section, Header, H3, H4, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  prices: any[];
+}
+
+const { prices } = Astro.props;
+---
+
+<!-- Prices -->
+<Section name="prices">
+  <Header title="Цены на декоративные рейки" />
+
+  {
+    prices.map((item) => (
+      <div class="prices__section">
+        <H3>{item.title}</H3>
+        <div class="prices__products">
+          {item.products.map((product: any) => (
+            <div class="prices__product">
+              <div class="prices__product-info">
+                <Image src={product.img} />
+                <H4>Сухой ясень</H4>
+                <P>Длина в размер (макс 3000 мм)</P>
+                <Button data-modal="callback">Заказать</Button>
+              </div>
+              <div class="prices__product-table">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Размер (Толщина/Ширина) (мм)</th>
+                      <th>Цена (м.п.)</th>
+                      <th>Цена (м.п.) с покраской</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {product.prices.map((price: any) => (
+                      <tr>
+                        <td>{price.size}</td>
+                        <td>{price.price}</td>
+                        <td>{price.painted}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .prices {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(30);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    &__products {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+    }
+
+    &__product {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: rem(30) rem(20);
+
+      @include media("lg") {
+        flex-direction: column;
+      }
+
+      &-info {
+        width: 100%;
+        max-width: rem(295);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(15);
+
+        @include media("lg") {
+          max-width: 100%;
+        }
+
+        .text-h4 {
+          color: var(--primary);
+        }
+
+        img {
+          width: 100%;
+          height: rem(155);
+          object-fit: cover;
+
+          @include media("lg") {
+            height: auto;
+          }
+        }
+
+        .btn {
+          height: rem(36);
+          color: var(--primary);
+          background: #fff;
+          box-shadow: none;
+          border: none;
+
+          &:hover {
+            color: #fff;
+            background: var(--primary);
+          }
+        }
+      }
+
+      &-table {
+        flex-grow: 1;
+
+        @include media("lg") {
+          width: 100%;
+          overflow: auto;
+        }
+        @include media("xs") {
+          margin-left: calc(var(--content-padding) * -1);
+          width: calc(100% + var(--content-padding) * 2);
+        }
+
+        table {
+          width: 100%;
+        }
+
+        thead {
+          height: rem(50);
+          background: #d9d9d9;
+        }
+
+        tbody {
+          tr {
+            height: rem(32);
+          }
+          tr:not(:last-child) {
+            border-bottom: rem(1) solid var(--primary);
+          }
+        }
+
+        th,
+        td {
+          padding: rem(5) rem(15);
+          font-size: 1rem;
+          font-weight: 300;
+          text-align: center;
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+</style>

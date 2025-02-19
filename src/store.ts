@@ -180,5 +180,148 @@ export const advantages = [
   "Работаете напрямую с производителем с более чем 15-летним опытом работы в данной сфере",
   "Индивидуальный подбор цветовых решений по изделиям",
   "Строго соблюдаем сроки и взятые на себя обязательства",
-  "Специализируемся на изготовлении изделий по индивидуальным эскизам архитекторов и дизайнеров, смело экспериментируем с материалами"
-]
+  "Специализируемся на изготовлении изделий по индивидуальным эскизам архитекторов и дизайнеров, смело экспериментируем с материалами",
+];
+
+export const pricing = {
+  list1: {
+    title: "Рейки для стен",
+    products: [
+      {
+        img: "prices/1.png",
+        name: "Сухой ясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+      {
+        img: "prices/2.png",
+        name: "Термоясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+      {
+        img: "prices/3.png",
+        name: "Термососна",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+    ],
+  },
+  list2: {
+    title: "Рейки для потолков",
+    products: [
+      {
+        img: "prices/1.png",
+        name: "Сухой ясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+      {
+        img: "prices/2.png",
+        name: "Термоясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+      {
+        img: "prices/3.png",
+        name: "Термососна",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+          { size: "20/50", price: "300 р", painted: "550 р" },
+          { size: "40/30", price: "456 р", painted: "756 р" },
+          { size: "40/40", price: "608 р", painted: "928 р" },
+          { size: "40/60", price: "912 р", painted: "1262 р" },
+          { size: "6/40", price: "140 р", painted: "220 р" },
+          { size: "6/60", price: "210 р", painted: "310 р" },
+        ],
+      },
+    ],
+  },
+  list3: {
+    title: "Рейки для перегородок",
+    products: [
+      {
+        img: "prices/1.png",
+        name: "Сухой ясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+        ],
+      },
+      {
+        img: "prices/2.png",
+        name: "Термоясень",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+        ],
+      },
+      {
+        img: "prices/3.png",
+        name: "Термососна",
+        desc: "Длина в размер (макс 3000 мм)",
+        prices: [
+          { size: "20/20", price: "120 р", painted: "270 р" },
+          { size: "20/30", price: "180 р", painted: "360 р" },
+          { size: "20/40", price: "280 р", painted: "480 р" },
+        ],
+      },
+    ],
+  },
+};

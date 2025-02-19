@@ -1,0 +1,117 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<!-- Installation -->
+<Section name="installation">
+  <Header
+    title="Доставка и монтаж"
+    desc="Осуществляем доставку  и монтаж своей продукции."
+  />
+
+  <div class="installation__content">
+    <div class="installation__content-img">
+      <div class="bg-img">
+        <Image src={image} />
+      </div>
+
+      <Image src={image} />
+    </div>
+    <div class="installation__content-desc">
+      <slot />
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .installation {
+    position: relative;
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__content {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: rem(20);
+
+      @include media("lg") {
+        flex-direction: column;
+      }
+
+      &-img {
+        position: relative;
+        padding: rem(22) rem(25);
+        min-width: rem(610);
+        border-radius: rem(25);
+        overflow: hidden;
+
+        @include media("xl") {
+          padding: rem(12) rem(15);
+          min-width: rem(480);
+        }
+        @include media("lg") {
+          min-width: auto;
+          width: 100%;
+        }
+        @include media("xs") {
+          padding: rem(10);
+        }
+
+        .bg-img {
+          filter: blur(rem(4));
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba($color: #000000, $alpha: 0.2);
+          }
+        }
+
+        & > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: inherit;
+          border: rem(1) solid var(--primary);
+        }
+      }
+
+      &-desc {
+        flex-grow: 1;
+        font-weight: 300;
+
+        strong {
+          color: var(--primary);
+          font-weight: 400;
+        }
+
+        ol {
+          list-style: decimal;
+        }
+      }
+    }
+  }
+</style>

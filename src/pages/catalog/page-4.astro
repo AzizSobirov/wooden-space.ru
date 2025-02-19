@@ -1,0 +1,45 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { colors, pricing } from "@/store";
+---
+
+<App title="Декоративные рейки для перегородок">
+  <main>
+    <Blocks.Hero
+      title="Декоративные рейки для перегородок"
+      image="hero/5.png"
+    />
+    <Blocks.Sizes
+      list={[
+        { size: "20x20", width: 20, height: 20 },
+        { size: "40x20", width: 40, height: 20 },
+        { size: "50x20", width: 50, height: 20 },
+        { size: "20x30", width: 20, height: 30 },
+        { size: "30x40", width: 30, height: 40 },
+        { size: "40x40", width: 40, height: 40 },
+        { size: "40x60", width: 40, height: 60 },
+      ]}
+    />
+    <Blocks.Colors
+      species={[
+        { img: "species/1.png", name: "Термососна" },
+        { img: "species/2.png", name: "Ясень" },
+        { img: "species/3.png", name: "Термоясень" },
+        { img: "species/4.png", name: "Дуб" },
+        { img: "species/5.png", name: "Экзотические виды древесины" },
+        { img: "species/6.png", name: "Лиственница" },
+      ]}
+      colors={colors}
+    />
+    <Blocks.Slats image="slats/3.png" />
+    <Blocks.Application type="calculate" />
+    <Blocks.Prices prices={[pricing.list1]} />
+    <Blocks.Delivery />
+    <Blocks.Clients />
+    <Blocks.Application />
+    <Blocks.Projects />
+    <Blocks.Video />
+    <Blocks.Faq />
+  </main>
+</App>

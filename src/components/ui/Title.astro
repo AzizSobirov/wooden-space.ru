@@ -21,6 +21,7 @@ import { H2 } from "./Text";
     &::before {
       content: "";
       margin-bottom: rem(2);
+      min-width: rem(32);
       width: rem(32);
       height: rem(32);
       display: inline-block;
@@ -30,6 +31,7 @@ import { H2 } from "./Text";
 
       @include media("sm") {
         margin-bottom: 0;
+        min-width: rem(28);
         width: rem(28);
         height: rem(28);
       }

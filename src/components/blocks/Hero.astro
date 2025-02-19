@@ -3,9 +3,11 @@ import { Section, H2, P, Image, Icon, Button } from "ui";
 
 interface Props {
   isMain?: boolean;
+  title?: string;
+  image?: string;
 }
 
-const { isMain = false } = Astro.props;
+const { isMain = false, title, image = "hero/1.png" } = Astro.props;
 ---
 
 <!-- Hero -->
@@ -52,7 +54,42 @@ const { isMain = false } = Astro.props;
       ) : (
         <div class="hero__content">
           <div class="bg-img">
-            <Image src="hero/2.png" />
+            <Image src={image} />
+          </div>
+
+          <div class="container">
+            <H2>{title}</H2>
+            <div class="hero__content-desc">
+              <p>
+                Декоративные рейки от WOODEN SPACE — это стильное и
+                функциональное решение для создания уютных и современных
+                интерьеров. Изготавливаемые из массива натуральной древесины,
+                они подчеркивают уникальную текстуру материала и привносят в
+                пространство тепло, элегантность и объем.
+              </p>
+              <ul>
+                <li>Преимущество</li>
+                <li>Преимущество</li>
+                <li>Преимущество</li>
+                <li>Преимущество</li>
+              </ul>
+            </div>
+
+            <Button data-modal="callback">
+              Рассчитать стоимость
+              <svg
+                width="42"
+                height="9"
+                viewBox="0 0 42 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 4C0.723858 4 0.5 4.22386 0.5 4.5C0.5 4.77614 0.723858 5 1 5V4ZM41.3536 4.85355C41.5488 4.65829 41.5488 4.34171 41.3536 4.14645L38.1716 0.964466C37.9763 0.769204 37.6597 0.769204 37.4645 0.964466C37.2692 1.15973 37.2692 1.47631 37.4645 1.67157L40.2929 4.5L37.4645 7.32843C37.2692 7.52369 37.2692 7.84027 37.4645 8.03553C37.6597 8.2308 37.9763 8.2308 38.1716 8.03553L41.3536 4.85355ZM1 5H41V4H1V5Z"
+                  fill="white"
+                />
+              </svg>
+            </Button>
           </div>
         </div>
       )
@@ -157,6 +194,78 @@ const { isMain = false } = Astro.props;
             .btn {
               width: 100%;
             }
+          }
+        }
+      }
+    }
+
+    &__content {
+      position: relative;
+      padding: rem(55) 0 rem(45);
+
+      @include media("sm") {
+        padding: rem(35) 0 rem(45);
+      }
+
+      .bg-img::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba($color: #000000, $alpha: 0.5);
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(25);
+      }
+
+      .text-h2 {
+        color: var(--primary);
+
+        @include media("sm") {
+          font-size: rem(28);
+        }
+      }
+
+      &-desc {
+        color: #fff;
+        font-size: rem(18);
+        font-weight: 300;
+        font-family: var(--font-secondary);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+
+        @include media("sm") {
+          font-size: 1rem;
+        }
+      }
+
+      ul {
+        padding-left: rem(24);
+        list-style-type: disc;
+      }
+
+      .btn {
+        margin-top: rem(15);
+        padding: 0 rem(25);
+        gap: rem(15);
+
+        svg {
+          transition: var(--transition-ease);
+        }
+
+        &:hover {
+          opacity: 1;
+
+          svg {
+            transform: translateX(rem(5));
           }
         }
       }
@@ -280,5 +389,9 @@ const { isMain = false } = Astro.props;
         }
       }
     }
+  }
+
+  .hero + .sizes::before {
+    display: none;
   }
 </style>

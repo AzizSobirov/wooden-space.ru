@@ -1,0 +1,104 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+
+interface Props {
+  list: any[];
+}
+
+const { list } = Astro.props;
+
+const scale = 1.6;
+---
+
+<!-- Sizes -->
+<Section name="sizes">
+  <Header
+    title="Стандартные размеры реек"
+    desc="По индивидуальному запросу изготавливаем и нестандартные размеры реек"
+  />
+
+  <div class="sizes__list swiper">
+    <div class="swiper-wrapper">
+      {
+        list.map((item) => (
+          <div class="sizes__list-item swiper-slide">
+            <P>{item.size}</P>
+            <img
+              src="/assets/img/wood.png"
+              alt=""
+              loading="lazy"
+              style={{
+                width: (item.width * scale) / 16 + "rem",
+                height: (item.height * scale) / 16 + "rem",
+              }}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .sizes {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-120%, -20%);
+      z-index: -2;
+      width: rem(750);
+      height: rem(750);
+      background: url(/assets/img/wood-circle.svg) center/contain no-repeat;
+      pointer-events: none;
+
+      @include media("lg") {
+        width: rem(500);
+        height: rem(500);
+      }
+      @include media("sm") {
+        left: 65%;
+        width: rem(350);
+        height: rem(350);
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(50);
+
+      @include media("sm") {
+        gap: rem(30);
+      }
+    }
+
+    &__list {
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: rem(20);
+      overflow: visible;
+
+      &-item {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: rem(6);
+      }
+
+      img {
+        object-fit: cover;
+        box-shadow: rem(-3) rem(3) 0 0 #aa8447;
+      }
+    }
+  }
+</style>

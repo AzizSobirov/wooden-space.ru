@@ -376,6 +376,22 @@ if (projects) {
   });
 }
 
+// wooden-space
+const woodenSpace = document.querySelector(".wooden-space");
+if (woodenSpace) {
+  const video = woodenSpace.querySelector("video");
+  const play = woodenSpace.querySelector(".wooden-space__video-play");
+  const playBtn = play.querySelector(".icon");
+
+  playBtn.addEventListener("click", () => {
+    play.style.display = "none";
+    video.muted = false;
+    video.currentTime = 0;
+    video.controls = true;
+    video.play();
+  });
+}
+
 // swipers
 let teamSwiper = new Swiper(".team .team__list", {
   slidesPerView: "auto",
@@ -410,6 +426,60 @@ let historySwiper = new Swiper(".history .history__swiper", {
       historyThumbs.update();
     },
   },
+});
+
+let sizesSwiper = new Swiper(".sizes .sizes__list", {
+  slidesPerView: "auto",
+  spaceBetween: 25,
+});
+
+let colorsSwipers = document.querySelectorAll(".colors .colors__list-swiper");
+colorsSwipers.forEach((swiper) => {
+  let swiperEl = swiper.querySelector(".swiper");
+  let prevBtn = swiper.querySelector(".btn-prev");
+  let nextBtn = swiper.querySelector(".btn-next");
+  let pagination = swiper.querySelector(".swiper-pagination");
+
+  let s = new Swiper(swiperEl, {
+    slidesPerView: "auto",
+    spaceBetween: 12,
+    slidesPerGroup: 2,
+    pagination: {
+      el: pagination,
+      clickable: true,
+    },
+    navigation: {
+      nextEl: nextBtn,
+      prevEl: prevBtn,
+    },
+    breakpoints: {
+      476: {
+        slidesPerGroup: 3,
+        spaceBetween: 15,
+      },
+      1025: {
+        spaceBetween: 20,
+        slidesPerGroup: 3,
+      },
+    },
+    on: {
+      slideChange: function () {
+        if (window.innerWidth > 1024) {
+          const activeIndex = s.activeIndex;
+
+          s.slides.forEach((slide, index) => {
+            if (index < activeIndex) {
+              // Hide slides before active slide
+              slide.style.visibility = "hidden";
+            } else {
+              // Show current and next slides
+              slide.style.visibility = "visible";
+            }
+          });
+        }
+      },
+    },
+  });
 });
 
 // Initialize the fancybox

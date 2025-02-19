@@ -1,0 +1,24 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { colors, pricing, prices } from "@/store";
+---
+
+<App title="Термодерево">
+  <main>
+    <Blocks.Hero title="Термодерево" image="hero/7.png" />
+    <Blocks.Colors
+      species={[
+        { img: "species/1.png", name: "Термососна" },
+        { img: "species/2.png", name: "Ясень" },
+        { img: "species/3.png", name: "Термоясень" },
+      ]}
+      colors={colors}
+    />
+    <Blocks.Delivery />
+    <Blocks.Clients />
+    <Blocks.Projects />
+    <Blocks.Application type="calculate" />
+    <Blocks.Production />
+  </main>
+</App>

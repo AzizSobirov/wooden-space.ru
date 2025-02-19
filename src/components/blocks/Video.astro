@@ -1,0 +1,97 @@
+---
+import { Section, Header, P, Image, Icon, Button } from "ui";
+---
+
+<!-- Wooden-space -->
+<Section name="wooden-space">
+  <Header
+    title="Выбираем декоративные рейки для стен и потолка."
+    desc="Все секреты правильного выбора материалов"
+  />
+
+  <Fragment slot="footer">
+    <div class="wooden-space__video">
+      <video loop muted poster="/assets/img/poster.png">
+        <source src="/assets/videos/factory.mp4" />
+      </video>
+
+      <div class="wooden-space__video-play">
+        <Icon src="play.svg" role="button" aria-label="Смотреть видео" />
+        <P>Посмотреть видео-ролик</P>
+      </div>
+    </div>
+  </Fragment>
+</Section>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .wooden-space {
+    position: relative;
+
+    &__video {
+      position: relative;
+      margin-top: rem(50);
+      height: rem(630);
+      width: 100%;
+
+      @include media("lg") {
+        height: rem(480);
+      }
+      @include media("sm") {
+        height: rem(280);
+      }
+      @include media("xs") {
+        margin-top: rem(30);
+        height: rem(240);
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &-play {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background: rgba($color: #363636, $alpha: 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: rem(40);
+        --icon-size: #{rem(124)};
+
+        @include media("lg") {
+          --icon-size: #{rem(100)};
+        }
+        @include media("sm") {
+          gap: rem(25);
+          --icon-size: #{rem(80)};
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(var(--content-width) - var(--content-padding));
+          height: calc(100% - rem(32));
+          border-radius: rem(21);
+          border: rem(1) solid var(--primary);
+          pointer-events: none;
+
+          @include media("xs") {
+            width: calc(100vw - rem(30));
+          }
+        }
+      }
+    }
+  }
+</style>

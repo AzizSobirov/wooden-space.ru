@@ -1,0 +1,55 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { colors, pricing } from "@/store";
+---
+
+<App title="Декоративные рейки">
+  <main>
+    <Blocks.Hero title="Декоративные рейки" image="hero/2.png" />
+    <Blocks.Services
+      title="Декоративные рейки по назначению"
+      list={[
+        { img: "services/1.png", title: "Для стен" },
+        { img: "services/2.png", title: "Для потолков" },
+        { img: "services/3.png", title: "Для перегородок" },
+      ]}
+    />
+    <Blocks.Slats image="slats/1.png" />
+    <Blocks.Application type="calculate" />
+    <Blocks.Sizes
+      list={[
+        { size: "20x20", width: 20, height: 20 },
+        { size: "40x20", width: 40, height: 20 },
+        { size: "60x20", width: 60, height: 20 },
+        { size: "80x20", width: 80, height: 20 },
+        { size: "20x30", width: 20, height: 30 },
+        { size: "30x40", width: 30, height: 40 },
+        { size: "40x40", width: 40, height: 40 },
+        { size: "40x60", width: 40, height: 60 },
+        { size: "40x80", width: 40, height: 80 },
+        { size: "40x100", width: 40, height: 100 },
+        { size: "40x130", width: 40, height: 130 },
+        { size: "40x150", width: 40, height: 150 },
+        { size: "40x200", width: 40, height: 200 },
+      ]}
+    />
+    <Blocks.Colors
+      species={[
+        { img: "species/1.png", name: "Термососна" },
+        { img: "species/2.png", name: "Ясень" },
+        { img: "species/3.png", name: "Термоясень" },
+        { img: "species/4.png", name: "Дуб" },
+        { img: "species/5.png", name: "Экзотические виды древесины" },
+        { img: "species/6.png", name: "Лиственница" },
+      ]}
+      colors={colors}
+    />
+    <Blocks.Prices prices={[pricing.list1, pricing.list2, pricing.list3]} />
+    <Blocks.Delivery />
+    <Blocks.Clients />
+    <Blocks.Projects />
+    <Blocks.Application />
+    <Blocks.Video />
+  </main>
+</App>

@@ -1,0 +1,33 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { colors, pricing, prices } from "@/store";
+---
+
+<App title="Декоративные балки">
+  <main>
+    <Blocks.Hero title="Декоративные балки" image="hero/6.png" />
+    <Blocks.Slats image="slats/4.png" variant="secondary" />
+    <Blocks.Colors
+      species={[
+        { img: "species/1.png", name: "Термососна" },
+        { img: "species/2.png", name: "Ясень" },
+        { img: "species/3.png", name: "Термоясень" },
+        { img: "species/4.png", name: "Дуб" },
+        { img: "species/5.png", name: "Экзотические виды древесины" },
+        { img: "species/6.png", name: "Лиственница" },
+      ]}
+      colors={colors}
+    />
+    <Blocks.Price
+      title="Цены на декоративные балки"
+      desc="Цены на фальшбалки зависят от многих факторов: порода древесины, размер сечения, длины, объем. Для более точного расчета обратитесь к нашим специалистам. Мы гарантируем оптимальное соотношение цена-качество."
+      prices={prices}
+    />
+    <Blocks.Application type="calculate" />
+    <Blocks.Delivery />
+    <Blocks.Clients />
+    <Blocks.Projects />
+    <Blocks.Application type="calculate" />
+  </main>
+</App>

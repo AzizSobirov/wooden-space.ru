@@ -5,9 +5,10 @@ interface Props {
   success?: boolean;
   id?: string;
   variant?: "primary" | "secondary";
+  type?: "calculate" | "default";
 }
 
-const { success = false, variant = "primary" } = Astro.props;
+const { success = false, variant = "primary", type = "default" } = Astro.props;
 ---
 
 {
@@ -26,11 +27,21 @@ const { success = false, variant = "primary" } = Astro.props;
       ) : (
         <>
           <div class="form-content">
-            <H2>Есть вопросы по продукции?</H2>
-            <P>
-              Заполните форму ниже и наш менеджер проконсультирует Вас и ответит
-              на все интересующие вопросы.
-            </P>
+            {type == "calculate" ? (
+               <H2>Расчитать стоимость</H2>
+                <P>
+               Заполните форму ниже и наш менеджер расчитает стоимость для Вас 
+               и ответит на все интересующие вопросы.
+                </P>
+            ) : (
+              <>
+                <H2>Есть вопросы по продукции?</H2>
+                <P>
+                  Заполните форму ниже и наш менеджер проконсультирует Вас и
+                  ответит на все интересующие вопросы.
+                </P>
+              </>
+            )}
 
             <form class="the-form">
               <input type="text" name="name" placeholder="Ваше имя" required />
