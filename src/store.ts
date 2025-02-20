@@ -14,7 +14,7 @@ export const navigations = [
     path: "/pricing",
   },
   {
-    name: "о компании",
+    name: "О компании",
     path: "/about",
     children: [
       {
@@ -28,15 +28,15 @@ export const navigations = [
     ],
   },
   {
-    name: "наши работы",
+    name: "Наши работы",
     path: "/portfolio",
   },
   {
-    name: "дизайнерам/архитекторам",
+    name: "Дизайнерам/Архитекторам",
     path: "/career",
   },
   {
-    name: "контакты",
+    name: "Контакты",
     path: "/contacts",
   },
 ];
