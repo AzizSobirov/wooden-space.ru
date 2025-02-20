@@ -392,6 +392,48 @@ if (woodenSpace) {
   });
 }
 
+// lamps
+const lamps = document.querySelector(".lamps");
+if (lamps) {
+  const items = lamps.querySelectorAll(".lamps__item");
+
+  items.forEach((item) => {
+    const desc = item.querySelector(".lamps__item-desc .text-p");
+    const btn = item.querySelector(".lamps__item-btn");
+    const btnText = btn.querySelector("span");
+
+    const convertPxToRem = (px) => (px / 16) * 1 + "rem";
+
+    btn.addEventListener("click", () => {
+      if (!btn.classList.contains("active")) {
+        desc.style.maxHeight = convertPxToRem(desc.scrollHeight);
+        btn.classList.add("active");
+        btnText.textContent = "Свернуть информацию";
+      } else {
+        desc.style.maxHeight = convertPxToRem(76);
+        btn.classList.remove("active");
+        btnText.textContent = "Развернуть информацию";
+      }
+    });
+  });
+}
+
+const product = document.querySelector(".product");
+if (product) {
+  const tabs = product.querySelectorAll(".product___details-tab");
+  const items = product.querySelectorAll(".product___details-item");
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((tab) => tab.classList.remove("active"));
+      tab.classList.add("active");
+
+      items.forEach((item) => item.classList.remove("active"));
+      items[index].classList.add("active");
+    });
+  });
+}
+
 // swipers
 let teamSwiper = new Swiper(".team .team__list", {
   slidesPerView: "auto",
@@ -480,6 +522,69 @@ colorsSwipers.forEach((swiper) => {
       },
     },
   });
+});
+
+let productThumbs = new Swiper(".product .product__images-thumbs", {
+  slidesPerView: "auto",
+  spaceBetween: 15,
+  breakpoints: {
+    1025: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+    },
+    1280: {
+      slidesPerView: 6,
+      spaceBetween: 20,
+    },
+  },
+  on: {
+    slideChange: function () {
+      productSwiper.slideTo(this.activeIndex);
+    },
+  },
+});
+
+let productSwiper = new Swiper(".product .product__images-swiper", {
+  slidesPerView: 1,
+  effect: "fade",
+  thumbs: {
+    swiper: productThumbs,
+  },
+  on: {
+    slideChange: function () {
+      productThumbs.update();
+    },
+  },
+});
+
+let productTabs = new Swiper(".panel__product .product__details-tabs", {
+  slidesPerView: "auto",
+  spaceBetween: 20,
+  breakpoints: {
+    1025: {
+      slidesPerView: 5,
+      spaceBetween: 20,
+    },
+  },
+  on: {
+    slideChange: function () {
+      productDetails.slideTo(this.activeIndex);
+    },
+  },
+});
+
+let productDetails = new Swiper(".panel__product .product__details-list", {
+  slidesPerView: 1,
+  effect: "fade",
+  autoHeight: true,
+  thumbs: {
+    swiper: productTabs,
+  },
+  on: {
+    slideChange: function () {
+      productTabs.update();
+    },
+  },
 });
 
 // Initialize the fancybox

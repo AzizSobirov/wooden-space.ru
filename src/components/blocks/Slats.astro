@@ -54,41 +54,49 @@ const { image, variant } = Astro.props;
       </div>
 
       {
-        variant == "secondary" ||
-          (variant == "secondary2" && (
-            <div class="slats__list-item">
-              <Icon src="4.png" />
-              <P>
-                <strong>
-                  Изделия изготавливаются точно в нужный Вам размер
-                </strong>
-                с гладкой поверхностью либо с эффектом состаривания (брашировка)
-              </P>
-            </div>
-          ))
+        (variant == "secondary" || variant == "secondary2") && (
+          <div class="slats__list-item">
+            <Icon src="4.png" />
+            <P>
+              <strong>Изделия изготавливаются точно в нужный Вам размер</strong>
+              с гладкой поверхностью либо с эффектом состаривания (брашировка)
+            </P>
+          </div>
+        )
       }
     </div>
   </div>
 
-  <div class="slats__includes">
-    <div class="slats__includes-item">
-      <Icon src="check-white.svg" />
-      <P>Материал – алюминий и <br /> оцинкованная сталь</P>
-    </div>
-    <div class="slats__includes-item">
-      <Icon src="check-white.svg" />
-      <P>Срок службы <br /> более 25 лет</P>
-    </div>
-    <div class="slats__includes-item">
-      <Icon src="check-white.svg" />
-      <P>Материал пожаробезопасен <br /> и долговечен</P>
-    </div>
-    <div class="slats__includes-item">
-      <Icon src="check-white.svg" />
-      <P>Можно использовать как во <br /> внутренней отделке так и в наружной</P
-      >
-    </div>
-  </div>
+  {
+    variant == "secondary2" && (
+      <div class="slats__includes">
+        <div class="slats__includes-item">
+          <Icon src="check-white.svg" />
+          <P>
+            Материал – алюминий и <br /> оцинкованная сталь
+          </P>
+        </div>
+        <div class="slats__includes-item">
+          <Icon src="check-white.svg" />
+          <P>
+            Срок службы <br /> более 25 лет
+          </P>
+        </div>
+        <div class="slats__includes-item">
+          <Icon src="check-white.svg" />
+          <P>
+            Материал пожаробезопасен <br /> и долговечен
+          </P>
+        </div>
+        <div class="slats__includes-item">
+          <Icon src="check-white.svg" />
+          <P>
+            Можно использовать как во <br /> внутренней отделке так и в наружной
+          </P>
+        </div>
+      </div>
+    )
+  }
 </Section>
 
 <style lang="scss" is:global>

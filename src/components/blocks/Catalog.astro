@@ -2,15 +2,16 @@
 import { Section, Header, H4, P, Image, Icon, Button } from "ui";
 
 interface Props {
+  title?: string;
   length?: number;
 }
 
-const { length = 6 } = Astro.props;
+const { title = "Наша продукция", length = 6 } = Astro.props;
 ---
 
 <!-- Catalog -->
 <Section name="catalog">
-  <Header title="Наша продукция" />
+  <Header title={title} />
 
   <div class="catalog__products">
     {

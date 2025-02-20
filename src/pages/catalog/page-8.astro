@@ -1,0 +1,17 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { colors, pricing, prices } from "@/store";
+---
+
+<App title="Светильники">
+  <main>
+    <Blocks.Hero title="Светильники" image="hero/9.png" />
+    <Blocks.Slats image="slats/6.png" variant="secondary" />
+    <Blocks.Lamps />
+    <Blocks.Delivery />
+    <Blocks.Clients />
+    <Blocks.Projects />
+    <Blocks.Application type="calculate" />
+  </main>
+</App>

@@ -1,0 +1,618 @@
+---
+import App from "@/App.astro";
+import * as Blocks from "blocks";
+import { Image, P, Button } from "ui";
+import { colors, pricing, prices } from "@/store";
+---
+
+<App title="Светильники">
+  <main>
+    <Blocks.Panel title="Фасадная доска из термоясеня. Сорт 0-1. 20мм">
+      <div class="panel__product product">
+        <div class="product__wrapper">
+          <div class="product__images">
+            <div class="product__images-swiper swiper">
+              <div class="swiper-wrapper">
+                {
+                  Array.from({ length: 8 }).map((_, i) => (
+                    <div
+                      class="swiper-slide"
+                      data-fancybox="product"
+                      data-src="/assets/img/product/1.png"
+                    >
+                      <Image src="product/1.png" />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+            <div class="product__images-thumbs swiper">
+              <div class="swiper-wrapper">
+                {
+                  Array.from({ length: 8 }).map((_, i) => (
+                    <div class="swiper-slide">
+                      <Image src="product/1.png" />
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+          <div class="product__info">
+            <div class="product__info-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Сечение</th>
+                    <th>Цена</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>20х75</td>
+                    <td
+                      ><span class="price">4 750 р /1 м²</span>
+                      <span class="old-price">5 463 р/ 1 м²</span></td
+                    >
+                  </tr>
+                  <tr>
+                    <td>20х75</td>
+                    <td
+                      ><span class="price">4 750 р /1 м²</span>
+                      <span class="old-price">5 463 р/ 1 м²</span></td
+                    >
+                  </tr>
+                  <tr>
+                    <td>20х75</td>
+                    <td
+                      ><span class="price">4 750 р /1 м²</span>
+                      <span class="old-price">5 463 р/ 1 м²</span></td
+                    >
+                  </tr>
+                  <tr>
+                    <td>20х75</td>
+                    <td
+                      ><span class="price">4 750 р /1 м²</span>
+                      <span class="old-price">5 463 р/ 1 м²</span></td
+                    >
+                  </tr>
+                  <tr>
+                    <td>20х75</td>
+                    <td
+                      ><span class="price">4 750 р /1 м²</span>
+                      <span class="old-price">5 463 р/ 1 м²</span></td
+                    >
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="product__info-desc">
+              <P>
+                В каталоге указаны самые популярные сечения. Возможно
+                изготовление доски <strong
+                  >любой толщины (от 10 до 40 мм) и ширины (от 40 до 200 мм)</strong
+                >, стоимость изделия уточняйте у менеджера.
+              </P>
+              <ul>
+                <li>
+                  <strong> Длина:</strong>
+                  доска из термоясеня поставляется несортированными длинами в диапазоне
+                  800-3000 мм, шаг по длине 100 мм.
+                </li>
+                <li>
+                  <strong> Сорт:</strong>
+                  Экстра (без сучков).
+                </li>
+                <li>
+                  <strong> Тип профиля:</strong>
+                  Прямой или скошенный планкен.
+                </li>
+                <li>
+                  <strong> Покрытие: </strong>
+                  Маслом (с защитным УФ-фильтром) опционально по желанию заказчика.
+                </li>
+              </ul>
+            </div>
+            <Button data-modal="callback">
+              Рассчитать стоимость
+
+              <svg
+                width="42"
+                height="9"
+                viewBox="0 0 42 9"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 4C0.723858 4 0.5 4.22386 0.5 4.5C0.5 4.77614 0.723858 5 1 5V4ZM41.3536 4.85355C41.5488 4.65829 41.5488 4.34171 41.3536 4.14645L38.1716 0.964466C37.9763 0.769204 37.6597 0.769204 37.4645 0.964466C37.2692 1.15973 37.2692 1.47631 37.4645 1.67157L40.2929 4.5L37.4645 7.32843C37.2692 7.52369 37.2692 7.84027 37.4645 8.03553C37.6597 8.2308 37.9763 8.2308 38.1716 8.03553L41.3536 4.85355ZM1 5H41V4H1V5Z"
+                  fill="white"></path>
+              </svg></Button
+            >
+          </div>
+        </div>
+
+        <div class="product__details">
+          <div class="product__details-tabs swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide active">Характеристики</div>
+              <div class="swiper-slide">Описание</div>
+              <div class="swiper-slide">Монтаж</div>
+              <div class="swiper-slide">Покрытие</div>
+              <div class="swiper-slide">Доставка</div>
+            </div>
+          </div>
+          <div class="product__details-list swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <p>
+                  <strong>Длина:</strong> доска поставляется несортированными
+                  длинами в диапазоне от 800 до 3000 мм с шагом 100 мм. До 50%
+                  партии длины 800-1900 мм, до 50% партии длины 2000-3000 мм.
+                  Поставка фиксированных длин увеличивает стоимость партии от
+                  15% до 50%.
+                  <br /><br />
+                  <strong>Сорт:</strong> Экстра, три видимые стороны без сучков,
+                  обратная сторона допускает пороки.
+                  <br /><br />
+                  <strong>Тип профиля:</strong> прямой/скошенный планкен, тонкий
+                  планкен для подшивки кровли, брусок, рейка. Также возможно
+                  изготовление профиля по Вашим размерам.
+                  <br /><br />
+                  <strong>Область применения:</strong> для облицовки стен
+                  фасадов, колонн, подшивки кровли, лавочки, стойки, беседки и
+                  другие поверхности наружной отделки.
+                  <br /><br />
+                  <strong>Оплата:</strong> оплата производится безналичным
+                  способом по реквизитам.
+                  <br /><br />
+                  <strong>Гарантия:</strong> 12 мес. срок службы доски не менее
+                  30 лет
+                  <br /><br />
+                  <strong>Срок поставки:</strong> от 2 рабочих дней. Мы
+                  поддерживаем постоянно складской запас 100 м3 сырья в
+                  заготовке.
+                  <br /><br />
+                  Мы исполним любой заказ в короткие сроки!
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <Image src="product/2.png" />
+                <p>
+                  Термодревесина – один из самых популярных материалов для
+                  наружной отделки фасадов объектов загородной недвижимости.
+                  Также этот материал является красивым и современным решением
+                  для подшивки свесов кровли, для заборов, лавочек, беседок и
+                  малых архитектурных форм. Это и неудивительно, ведь
+                  термодроевесина – натуральный и экологически чистый продукт.
+                  Она изготавливается по специальной технологии из натурального
+                  цельного массива древесины путем воздействия только
+                  температуры и пара. В ходе такой обработки у древесины
+                  удаляются смолы и полисахариды, изменяя древесину на
+                  молекулярном уровне, придавая ей качественно новые свойства.
+                  <br /><br />
+                  Под действием высоких температур более 150* рвутся молекурярные
+                  цепочки древесины, из которых удаляется связанная влага. В результате
+                  древесина приобретает уникальные и универсальные свойства, ее размерная
+                  стабильность увеличивается более, чем в 10 раз по сравнению с обычной
+                  сухой древесиной. Термодревесина для наружной отделки фасадов отличается
+                  богатой текстурой, долговечностью, экологичностью и размерной стабильностью,
+                  не уступая по своим характеристикам экзотический породам древесины.
+                  Поэтому термодревесина идеально подходит для наружной отделки загородных домов.
+                </p>
+              </div>
+              <div class="swiper-slide">
+                <p>
+                  <strong> Скрытый способ SPACECLICK</strong> подразумевает
+                  крепление доски к подсистеме таким образом, что ни одного
+                  метиза вы не увидите на лицевой части доски. Такой крепеж
+                  надежно фиксирует доску к несущему элементу. Самым удобным
+                  типом крепления является специальная пластиковая клипса
+                  SPACECLICK. Она фиксируется на алюминиевую направляющую.
+                </p>
+                <Image src="product/3.png" />
+                <p>Преимущества данной системы крепления:</p>
+                <ul>
+                  <li>легкий и быстрый монтаж. Монтаж доски в одно нажатие;</li>
+                  <li>скрытая система крепления;</li>
+                  <li>
+                    пропил с тыльной стороны под клипсу снимает напряжение в
+                    доске и делает ее еще более стабильной;
+                  </li>
+                  <li>легкий демонтаж доски во время сборки.</li>
+                </ul>
+
+                <p>Преимущества данной системы крепления:</p>
+                <ul>
+                  <li>легкий и быстрый монтаж. Монтаж доски в одно нажатие;</li>
+                  <li>скрытая система крепления;</li>
+                  <li>
+                    пропил с тыльной стороны под клипсу снимает напряжение в
+                    доске и делает ее еще более стабильной;
+                  </li>
+                  <li>легкий демонтаж доски во время сборки.</li>
+                </ul>
+
+                <Image src="product/4.png" />
+
+                <ol>
+                  <li>Несущая стена</li>
+                  <li>Выносной кронштейн</li>
+                  <li>Направляющий профиль</li>
+                  <li>Облицовочная доска</li>
+                </ol>
+
+                <p>
+                  В качестве направляющего профиля мы рекомендуем использовать
+                  брус из термососны или лиственницы сечением 40*60 мм
+                  Термообработка делает древесину более хрупкой, поэтому
+                  категорически запрещено вкручивать шурупы без предварительного
+                  просверливания отверстий. Данное действие приведет к
+                  раскалыванию изделий. Торцы древесины обязательно нужно
+                  покрывать маслом или воском. Т.к. через торцы доска набирает
+                  влагу больше всего. Это осуществляется на объекте, т.к. доска
+                  на месте подрезается. Существует несколько способов крепления
+                  доски:
+                  <br /><br />
+                  <strong>Видимый </strong> путем крепления саморезом доски насквозь
+                  к деревянной направляющей. Мы рекомендуем использовать саморезы
+                  из нержавеющей стали SPAX. Они имеют двойную резьбу и надежно фиксируют
+                  доску к направляющему элементу. Преимуществом данного способа крепления
+                  является быстрота монтажа, низкая стоимость крепежа, возможность
+                  точечной замены доски в процессе эксплуатации.
+                </p>
+
+                <Image src="product/5.png" />
+              </div>
+              <div class="swiper-slide">
+                <p>
+                  По умолчанию наша доска поставляется без покрытия. Однако
+                  термодревесина, как и любое другое натуральное дерево,
+                  способно выгорать на солнце. Если ее не покрывать, она будет
+                  благородно стареть, приобретая красивую серебристую седину. Но
+                  чтобы придать и сохранить благородный оттенок термодревесины,
+                  ее необходимо защищать от прямого воздействия солнечных лучей
+                  специальными маслами и пропитками, содержащими пигмент. И чем
+                  больше пигмента в составе, тем дольше будет сохраняться цвет.
+                  Покраска также защищает древесину от поверхностных трещин. А
+                  торцы досок необходимо также покрывать маслом, т.к. через
+                  торцы в древесину проникает больше влаги и их защите нужно
+                  уделять особое внимание. Наши доски мы бережно покрываем
+                  качественными маслами. Покраска доски осуществляется в 2 слоя
+                  с трех видимых сторон и в 1 слой с тыльной стороны. Перед
+                  покраской доска проходит шлифовку. Это важно, чтобы вскрыть
+                  поры, и пигмент глубже проник в структуру древесины. Далее
+                  доска подвергается межслойной шлифовке и наносится второй
+                  слой. Время, когда необходимо будет обновить покрытие - от 5
+                  лет в зависимости от расположения фасада относительно сторон
+                  света. Мы знаем свое дело в профессиональной окраске. Поэтому
+                  Вы смело можете доверить нам свою доску для такой защиты.
+                </p>
+                <Image src="product/6.png" />
+              </div>
+              <div class="swiper-slide">
+                <p>
+                  Доставка осуществляется собственным или наемным транспортом по
+                  Москве, Московской области. Однако мы работаем по всей России
+                  и логистику возьмем на себя с обязательным условием
+                  страхования груза. Ваше спокойствие этого стоит!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Blocks.Panel>
+    <Blocks.Catalog title="Смотрите также" length={3} />
+  </main>
+</App>
+
+<style lang="scss" is:global>
+  @use "scss/helpers" as *;
+
+  .product {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(100);
+
+    @include media("sm") {
+      gap: rem(40);
+    }
+
+    &__wrapper {
+      width: 100%;
+      display: grid;
+      grid-template-columns: rem(610) 1fr;
+      gap: rem(30) rem(20);
+
+      @include media("xl") {
+        grid-template-columns: rem(500) 1fr;
+      }
+      @include media("lg") {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &__images {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(15);
+
+      &-swiper {
+        width: 100%;
+        height: rem(540);
+        border-radius: rem(25);
+        overflow: hidden;
+
+        @include media("xl") {
+          height: rem(440);
+        }
+        @include media("lg") {
+          height: rem(640);
+          display: grid !important;
+
+          .swiper-wrapper {
+            min-width: 0 !important;
+          }
+        }
+        @include media("md") {
+          height: rem(480);
+        }
+        @include media("sm") {
+          height: rem(400);
+        }
+        @include media("xs") {
+          height: rem(360);
+        }
+        @include media("380px") {
+          height: rem(320);
+        }
+
+        .swiper-slide {
+          cursor: zoom-in;
+        }
+      }
+
+      &-thumbs {
+        width: 100%;
+
+        @include media("lg") {
+          display: grid !important;
+          overflow: visible;
+
+          .swiper-wrapper {
+            min-width: 0 !important;
+          }
+        }
+
+        .swiper-slide {
+          cursor: pointer;
+          border-radius: rem(10);
+          overflow: hidden;
+
+          @include media("lg") {
+            width: rem(120);
+          }
+          @include media("sm") {
+            width: rem(80);
+          }
+        }
+      }
+
+      .swiper {
+        width: 100%;
+
+        &-slide {
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
+    &__info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(25);
+
+      &-table {
+        width: 100%;
+        overflow: auto;
+
+        table {
+          width: 100%;
+          text-align: center;
+          white-space: nowrap;
+        }
+
+        thead {
+          background: var(--primary);
+          border-radius: rem(10) rem(10) 0 0;
+        }
+
+        tbody {
+          font-weight: 300;
+          background: #fff;
+
+          tr:not(:last-child) {
+            border-bottom: rem(1) solid var(--primary);
+          }
+        }
+
+        tr {
+          height: rem(38);
+        }
+
+        th {
+          width: 50%;
+          color: #fff;
+          font-weight: 600;
+          background: var(--primary);
+
+          @include media("sm") {
+            width: auto;
+          }
+
+          &:first-child {
+            border-top-left-radius: rem(10);
+          }
+          &:last-child {
+            border-top-right-radius: rem(10);
+          }
+        }
+
+        .price {
+          color: var(--primary);
+          font-weight: 600;
+
+          @include media("sm") {
+            margin-top: rem(5);
+            display: block;
+          }
+        }
+
+        .old-price {
+          color: #828282;
+          font-size: rem(14);
+          text-decoration: line-through;
+
+          @include media("sm") {
+            margin-bottom: rem(5);
+            display: block;
+          }
+        }
+      }
+
+      &-desc {
+        width: 100%;
+        font-family: var(--font-secondary);
+        font-weight: 300;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(20);
+
+        ul {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(12);
+        }
+
+        strong {
+          color: var(--primary);
+          font-weight: 400;
+        }
+      }
+
+      .btn {
+        margin-top: rem(10);
+        padding: 0 rem(25);
+        font-family: var(--font-secondary);
+        font-weight: 300;
+        text-transform: capitalize;
+        gap: rem(15);
+
+        @include media("sm") {
+          margin-top: 0;
+        }
+
+        svg {
+          transition: var(--transition-ease);
+        }
+
+        &:hover {
+          opacity: 1;
+
+          svg {
+            transform: translateX(rem(5));
+          }
+        }
+      }
+    }
+
+    &__details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(40);
+
+      @include media("sm") {
+        gap: rem(20);
+      }
+
+      &-tabs {
+        width: 100%;
+        overflow: visible;
+
+        .swiper-slide {
+          padding: rem(10) rem(20);
+          cursor: pointer;
+
+          &-thumb-active {
+            color: var(--primary);
+            text-decoration: underline dotted;
+          }
+
+          @include media("lg") {
+            padding: rem(10);
+            width: fit-content;
+          }
+        }
+      }
+
+      &-list {
+        width: 100%;
+        font-weight: 300;
+        font-family: var(--font-secondary);
+
+        .swiper-slide {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: rem(20);
+          opacity: 0 !important;
+
+          &-active {
+            opacity: 1 !important;
+          }
+        }
+      }
+
+      ul,
+      ol,
+      p {
+        width: 100%;
+        max-width: rem(800);
+      }
+
+      ul {
+        padding-left: rem(24);
+        list-style: disc;
+      }
+
+      ol {
+        padding-left: rem(24);
+        list-style: decimal;
+      }
+
+      strong {
+        font-weight: 600;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+</style>
